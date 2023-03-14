@@ -1,0 +1,64 @@
+.dna-about {
+  min-height: 100vh;
+  display: flex;
+  position: relative;
+  border-top: 0.3rem solid $accent;
+
+  &-bg {
+    flex: none;
+    width: 119.9rem;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../images/dna-about.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: sticky;
+    top: 0;
+    left: 0;
+    border-right: 0.3rem solid $accent;
+  }
+
+  &__title {
+    font-weight: $font-eb;
+    font-size: 9.6rem;
+    line-height: 11.3rem;
+    color: #FFFFFF;
+  }
+
+  &-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0rem 3rem;
+    border-bottom: 0.3rem solid $accent;
+
+    &__item {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 6.7rem 6.6rem 7rem 0rem;
+
+      &:not(:last-child) {
+        border-bottom: 0.3rem solid $accent;
+      }
+    }
+
+    &__number {
+      flex: none;
+      width: 7.5rem;
+      font-weight: $font-el;
+      font-size: 9.6rem;
+      line-height: 11.6rem;
+      color: $accent;
+    }
+
+    &__text {
+      padding-top: 1.3rem;
+      font-size: 1.8rem;
+      line-height: 2.3rem;
+      letter-spacing: 0.03em;
+    }
+  }
+}
