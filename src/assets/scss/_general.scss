@@ -14,18 +14,19 @@ html {
   background-color: $white;
 }
 
-.scroll-container {
-
+body {
+  overflow-x: hidden;
 }
 
-.scroll-pin {
+.hrz-container {
+  display: flex;
+  flex-wrap: nowrap;
   height: 100vh;
-  display: flex;
 }
 
-.pin-wraper {
-  height: 100%;
+.hrz-inner {
   display: flex;
+  height: 100%;
 }
 
 .shadow-img {
