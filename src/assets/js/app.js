@@ -1,68 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // const hrzContainer = document.querySelector(".hrz-container");
-  // const hrzInner = hrzContainer.querySelector(".hrz-inner");
+  if (document.querySelector(".main-top")) {
+    const mainTopWrapper = document.querySelector(".main-top-wrapper");
+    const mainTop = mainTopWrapper.querySelector(".main-top");
 
-  // gsap.to(hrzContainer, {
-  //   scrollTrigger: {
-  //     trigger: hrzContainer,
-  //     pin: true,
-  //     scrub: 2,
-  //     // markers: true,
-  //   },
-  //   x: -1 * (hrzInner.getBoundingClientRect().width - hrzContainer.getBoundingClientRect().width),
-  //   ease: "none",
-  // })
-
-  const hrzContainers = gsap.utils.toArray(".hrz-container");
-  hrzContainers.forEach(container => {
-    const inner = container.querySelector(".hrz-inner");
-    const innerWidth = inner.getBoundingClientRect().width;
-    const containerWidth = container.getBoundingClientRect().width;
-
-    // gsap.to(inner, {
-    //   scrollTrigger: {
-    //     trigger: container,
-    //     pin: true,
-    //     scrub: 2,
-    //     // markers: true,
-    //   },
-    //   x: -1 * (innerWidth - containerWidth),
-    //   ease: "none",
-    // })
-
-    const tl = gsap.timeline({
+    const mainTL = gsap.timeline({
       scrollTrigger: {
-        trigger: container,
-        pin: true,
+        trigger: mainTopWrapper,
         scrub: 1,
-        // markers: true,
-      },
+        pin: true,
+        end: "200%",
+      }
     })
-
-    tl.to(inner, {
-      x: -1 * (innerWidth - containerWidth),
-      duration: 1,
-      ease: "none"
-    }, 0.05)
-  });
+      .to(mainTop, {
+        duration: 1,
+        ease: "none",
+        x: -1 * (mainTop.scrollWidth - mainTopWrapper.clientWidth) + "px",
+      })
+  }
 
   if (document.querySelector(".main-about-wrapper")) {
 
     const mainAboutWrapper = document.querySelector(".main-about-wrapper");
     const mainAboutTimeline = mainAboutWrapper.querySelector(".main-about-timeline__fill");
-    const mainAbout = mainAboutWrapper.querySelector(".main-about");
-
-    const mainAboutBoxList = gsap.utils.toArray(".main-about-box");
-    let scrollWidth = mainAboutBoxList.reduce((acc, item) => {
-      return acc += item.scrollWidth;
-    }, 0)
 
     const mainTL = gsap.timeline({
       scrollTrigger: {
         trigger: mainAboutWrapper,
         scrub: 1,
         pin: true,
-        // markers: true,
         end: "500%",
         onUpdate: self => mainAboutTimeline.style.width = `${self.progress * 100}%`
       }
@@ -72,7 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
       duration: 1,
       ease: "none",
       x: -1 * (document.querySelector(".main-about-slide_1 .main-about-box_1").offsetWidth - mainAboutWrapper.clientWidth) + "px",
-      onComplete: () => console.log("complete slide_1")
     })
     mainTL.to(".main-about-slide_2", {
       duration: 1,

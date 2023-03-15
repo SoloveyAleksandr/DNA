@@ -1,0 +1,23 @@
+.main-slider {
+  &-swiper {
+    height: 86.2rem;
+    min-height: 100vh;
+    background-color: #0C0D0D;
+
+    &-slide {
+      display: flex;
+      align-items: center;
+      padding-left: 46.8rem;
+      padding-right: 8rem;
+      justify-content: space-between;
+
+      &__text {
+        max-width: 39.8rem;
+        color: #fff;
+        font-weight: $font-l;
+        font-size: 2.8rem;
+        line-height: 3.3rem;
+      }
+    }
+  }
+}

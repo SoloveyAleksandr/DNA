@@ -1,8 +1,13 @@
 .main-top {
-  // height: 100vh;
+  height: 100%;
   padding-left: 8.3rem;
-  // display: flex;
-  // height: 100%;
+  display: flex;
+
+  &-wrapper {
+    overflow: hidden;
+    height: 100vh;
+    width: 100%;
+  }
 
   &-head {
     display: flex;
