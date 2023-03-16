@@ -60,6 +60,8 @@
         padding: 0;
         margin: 0;
         outline: none;
+        position: relative;
+        z-index: 1000;
 
         &:hover {
           svg {
@@ -75,8 +77,15 @@
           transition: 0.3s;
         }
 
+        &_profile {
+          &._active {
+            svg {
+              fill: $white;
+            }
+          }
+        }
+
         &_burger {
-          position: relative;
           display: flex;
           align-items: center;
           justify-content: center;

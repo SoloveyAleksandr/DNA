@@ -122,8 +122,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (document.querySelector(".header")) {
     class Menu {
-      constructor(btn, menu) {
+      constructor(btn, profileBtn, menu) {
         this.btn = document.querySelector(btn);
+        this.menu = document.querySelector(menu);
+        this.profileBtn = document.querySelector(profileBtn)
         this.isOpen = false;
 
         if (this.btn) {
@@ -145,15 +147,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
       open() {
         this.btn.classList.add("_active");
+        this.profileBtn.classList.add("_active");
+        this.menu.classList.add("_active");
         this.isOpen = true;
       }
 
       close() {
         this.btn.classList.remove("_active");
+        this.profileBtn.classList.remove("_active");
+        this.menu.classList.remove("_active");
         this.isOpen = false;
       }
     }
 
-    new Menu(".header-nav-btns__btn_burger");
+    new Menu(".header-nav-btns__btn_burger", ".header-nav-btns__btn_profile", ".menu");
   }
 });

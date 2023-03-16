@@ -85,6 +85,7 @@
       flex-direction: column;
       gap: 0.7rem;
       transition: 0.3s;
+      width: fit-content;
 
       &::after {
         content: "";
