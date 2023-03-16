@@ -49,6 +49,10 @@ svg {
   transition: all 0.1s linear;
 }
 
+@import "./blocks/header";
+@import "./blocks/footer";
+@import "./blocks/main-form";
+
 @import "./blocks/main-top";
 @import "./blocks/dna-about";
 @import "./blocks/main.about";

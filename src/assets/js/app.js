@@ -109,4 +109,51 @@ document.addEventListener("DOMContentLoaded", () => {
     //   onComplete: () => console.log("complete")
     // })
   }
+
+  if (document.querySelector(".main-slider")) {
+    const swiper = new Swiper('.main-slider-swiper', {
+      speed: 1000,
+      navigation: {
+        nextEl: ".main-slider .main-slider__btn_next",
+        prevEl: ".main-slider .main-slider__btn_prev",
+      },
+    });
+  }
+
+  if (document.querySelector(".header")) {
+    class Menu {
+      constructor(btn, menu) {
+        this.btn = document.querySelector(btn);
+        this.isOpen = false;
+
+        if (this.btn) {
+          this.init();
+        }
+      }
+
+      init() {
+        this.btn.addEventListener("click", this.handleClick.bind(this));
+      }
+
+      handleClick() {
+        if (this.isOpen) {
+          this.close();
+        } else {
+          this.open();
+        }
+      }
+
+      open() {
+        this.btn.classList.add("_active");
+        this.isOpen = true;
+      }
+
+      close() {
+        this.btn.classList.remove("_active");
+        this.isOpen = false;
+      }
+    }
+
+    new Menu(".header-nav-btns__btn_burger");
+  }
 });
