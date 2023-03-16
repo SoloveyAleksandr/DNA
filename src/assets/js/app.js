@@ -162,4 +162,171 @@ document.addEventListener("DOMContentLoaded", () => {
 
     new Menu(".header-nav-btns__btn_burger", ".header-nav-btns__btn_profile", ".menu");
   }
+
+  const canvas = document.querySelector(".main-top-canvas");
+
+  if (canvas) {
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, canvas.offsetWidth / canvas.offsetHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
+      context: canvas.getContext("webgl"),
+      antialias: true,
+      alpha: true
+    });
+
+    const simplex = new SimplexNoise();
+
+    const startWindowSize = window.innerWidth;
+
+    const breakpoints = [375, 500, 850, 1200, 1920];
+    let maxBreakpoint = Infinity;
+    let minBreakpoint = null;
+
+    for (let i = 0; i < breakpoints.length; i++) {
+      if (startWindowSize < breakpoints[i]) {
+        maxBreakpoint = breakpoints[i];
+        break;
+      }
+    }
+
+    for (let i = breakpoints.length - 1; i > 0; i--) {
+      if (startWindowSize > breakpoints[i]) {
+        minBreakpoint = breakpoints[i];
+        break;
+      }
+    }
+
+    if (breakpoints.includes(startWindowSize)) {
+      maxBreakpoint = startWindowSize;
+    }
+
+    // console.log(minBreakpoint, maxBreakpoint)
+
+    const canvasWidth = canvas.offsetWidth;
+    const canvasHeight = canvas.offsetHeight;
+    const canvasWidthPrec = canvasWidth / (window.innerWidth / 100) / 100;
+    const canvasHeightPrec = canvasHeight / (window.innerWidth / 100) / 100;
+
+    renderer.setSize(canvasWidth, canvasHeight);
+
+    window.addEventListener("resize", () => {
+      const width = window.innerWidth;
+      renderer.setSize(window.innerWidth * canvasWidthPrec, window.innerWidth * canvasHeightPrec);
+      if (width >= maxBreakpoint || width <= minBreakpoint) {
+        location.reload();
+      }
+    })
+
+    renderer.setPixelRatio(window.devicePixelRatio || 1);
+
+    camera.position.z = 10;
+
+    //==>точечный свет
+    // let lightTop = new THREE.DirectionalLight("#5F9A94", 1);
+    // lightTop.position.set(0, 500, 200);
+    // lightTop.castShadow = true;
+    // scene.add(lightTop);
+
+    let light_1 = new THREE.DirectionalLight("#88E5CB", 1);
+    light_1.position.set(100, 100, 100);
+    light_1.castShadow = true;
+    scene.add(light_1);
+
+    let light_2 = new THREE.DirectionalLight("#436759", 0.5);
+    light_2.position.set(-100, -100, 100);
+    light_2.castShadow = true;
+    scene.add(light_2);
+    //<==
+
+    //основной свет
+    let ambientLight = new THREE.AmbientLight("#00C8B7", 0.5);
+    scene.add(ambientLight);
+
+    let geometry = new THREE.SphereGeometry(0.8, 32, 32);
+    let material = new THREE.MeshPhongMaterial({
+      color: "#87E3CA",
+      shininess: 100
+    });
+    // let sphere = new THREE.Mesh(geometry, material);
+    // scene.add(sphere);
+
+    function removeObject(item) {
+      pivot.remove(item);
+      sphereList.shift();
+    }
+    const pivot = new THREE.Group();
+    scene.add(pivot);
+    pivot.rotation.z = -0.2;
+
+    const sphereList = [];
+
+    let start = 5;
+    for (let i = 0; i < 30; i++) {
+      let geometry = new THREE.SphereGeometry(gsap.utils.random(0.1, 0.6), 16, 16);
+      const sphere = new THREE.Mesh(geometry, material);
+      sphere.position.x = gsap.utils.random(-1, 1);
+      sphere.position.z = gsap.utils.random(-1, 1);
+      sphere.position.y = start;
+
+      start -= 0.4;
+      // scene.add(sphere);
+      pivot.add(sphere);
+      sphereList.push(sphere);
+
+      setTimeout(() => {
+        removeObject(sphere);
+      }, 15000)
+    }
+
+    setInterval(() => {
+      let geometry = new THREE.SphereGeometry(gsap.utils.random(0.1, 0.6), 16, 16);
+      const sphere = new THREE.Mesh(geometry, material);
+      sphere.position.x = gsap.utils.random(-1, 1);
+      sphere.position.z = gsap.utils.random(-1, 1);
+      sphere.position.y = -5;
+
+      // scene.add(sphere);
+      pivot.add(sphere);
+      sphereList.push(sphere);
+
+      setTimeout(() => {
+        removeObject(sphere);
+      }, 15000)
+    }, 800);
+
+    // renderer.render(scene, camera);
+
+    const loader = new THREE.GLTFLoader();
+
+    // loader.load("./assets/models/dna.glb", (gltf) => {
+    //   scene.add(gltf.scene);
+    // }, (e) => {
+    //   console.log(e);
+    // })
+
+    // let model = null;
+    // loader.load("./assets/models/dna.glb", (glb) => {
+    //   // loader.load("./assets/models/DNA.gltf", (glb) => {
+    //   model = glb.scene;
+    //   model.position.x = -1;
+    //   model.scale.set(3, 3, 3);
+    //   scene.add(model);
+    //   console.log(model);
+    // }, (e) => {
+    //   console.log(e);
+    // })
+
+    function animate() {
+      sphereList.forEach(el => {
+        el.position.y += 0.01;
+        // el.position.x += 0.002;
+      })
+      pivot.rotateY(0.002)
+      renderer.render(scene, camera);
+      requestAnimationFrame(animate);
+    }
+
+    requestAnimationFrame(animate);
+  }
 });

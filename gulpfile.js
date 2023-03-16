@@ -26,6 +26,7 @@ const path = {
     images: distPath + "assets/images/",
     fonts: distPath + "assets/fonts/",
     video: distPath + "assets/video/",
+    models: distPath + "assets/models/",
   },
   src: {
     html: srcPath + "*.html",
@@ -46,6 +47,7 @@ const path = {
       "assets/images/**/*.{jpg,png,svg,gif,ico,webp,webmanifest,xml,json}",
     video: srcPath + "assets/video/**/*.*",
     fonts: srcPath + "assets/fonts/**/*.{eot,woff,woff2,ttf,svg}",
+    models: srcPath + "assets/models/**/*.*",
   },
   clean: "./" + distPath,
 };
@@ -188,6 +190,12 @@ function cleanWithoutImg() {
   return del([`!dist/**/images/**`, 'dist/**/fonts/**', 'dist/**/css/**', 'dist/**/js/**', 'dist/index.html'])
 }
 
+function models() {
+  return src(path.watch.models)
+    .pipe(dest(path.build.models))
+    .pipe(browserSync.reload({ stream: true }));
+}
+
 function watchFiles() {
   gulp.watch([path.watch.html], html);
   gulp.watch([path.watch.css], css);
@@ -204,13 +212,14 @@ function watchFilesDev() {
   gulp.watch([path.watch.images], imagesWithoutMin);
   gulp.watch([path.watch.video], video);
   gulp.watch([path.watch.fonts], fonts);
+  gulp.watch([path.watch.models], models);
 }
 
 const start = gulp.series(cleanWithoutImg, gulp.parallel(html, css, js, fonts));
 const watch = gulp.parallel(start, watchFiles, serve);
 const build = gulp.series(clean, html, css, js, images, video, fonts);
 const serverStart = gulp.series(clean, html, css, js, images, video, fonts, gulp.parallel(watchFiles, serve));
-const dev = gulp.series(clean, html, css, js, imagesWithoutMin, video, fonts, gulp.parallel(watchFilesDev, serve));
+const dev = gulp.series(clean, html, css, js, imagesWithoutMin, video, fonts, models, gulp.parallel(watchFilesDev, serve));
 
 /* Exports Tasks */
 exports.html = html;
