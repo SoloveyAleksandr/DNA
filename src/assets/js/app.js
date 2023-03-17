@@ -228,7 +228,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // lightTop.castShadow = true;
     // scene.add(lightTop);
 
-    let light_1 = new THREE.DirectionalLight("#88E5CB", 1);
+    let light_1 = new THREE.DirectionalLight("#88E5CB", 0.8);
     light_1.position.set(100, 100, 100);
     light_1.castShadow = true;
     scene.add(light_1);
@@ -251,53 +251,86 @@ document.addEventListener("DOMContentLoaded", () => {
     // let sphere = new THREE.Mesh(geometry, material);
     // scene.add(sphere);
 
-    function removeObject(item) {
-      pivot.remove(item);
-      sphereList.shift();
-    }
+    // function removeObject(item) {
+    //   pivot.remove(item);
+    //   sphereList.shift();
+    // }
     const pivot = new THREE.Group();
     scene.add(pivot);
+    pivot.position.x = 0.25;
     pivot.rotation.z = -0.2;
 
-    const sphereList = [];
+    // const sphereList = [];
 
-    let start = 5;
-    for (let i = 0; i < 30; i++) {
-      let geometry = new THREE.SphereGeometry(gsap.utils.random(0.1, 0.6), 16, 16);
-      const sphere = new THREE.Mesh(geometry, material);
-      sphere.position.x = gsap.utils.random(-1, 1);
-      sphere.position.z = gsap.utils.random(-1, 1);
-      sphere.position.y = start;
+    // let start = 5;
+    // for (let i = 0; i < 30; i++) {
+    //   let geometry = new THREE.SphereGeometry(gsap.utils.random(0.1, 0.6), 16, 16);
+    //   const sphere = new THREE.Mesh(geometry, material);
+    //   sphere.position.x = gsap.utils.random(-1, 1);
+    //   sphere.position.z = gsap.utils.random(-1, 1);
+    //   sphere.position.y = start;
 
-      start -= 0.4;
-      // scene.add(sphere);
-      pivot.add(sphere);
-      sphereList.push(sphere);
+    //   start -= 0.4;
+    //   // scene.add(sphere);
+    //   pivot.add(sphere);
+    //   sphereList.push(sphere);
 
-      setTimeout(() => {
-        removeObject(sphere);
-      }, 15000)
-    }
+    //   setTimeout(() => {
+    //     removeObject(sphere);
+    //   }, 15000)
+    // }
 
-    setInterval(() => {
-      let geometry = new THREE.SphereGeometry(gsap.utils.random(0.1, 0.6), 16, 16);
-      const sphere = new THREE.Mesh(geometry, material);
-      sphere.position.x = gsap.utils.random(-1, 1);
-      sphere.position.z = gsap.utils.random(-1, 1);
-      sphere.position.y = -5;
+    // setInterval(() => {
+    //   let geometry = new THREE.SphereGeometry(gsap.utils.random(0.1, 0.6), 16, 16);
+    //   const sphere = new THREE.Mesh(geometry, material);
+    //   sphere.position.x = gsap.utils.random(-1, 1);
+    //   sphere.position.z = gsap.utils.random(-1, 1);
+    //   sphere.position.y = -5;
 
-      // scene.add(sphere);
-      pivot.add(sphere);
-      sphereList.push(sphere);
+    //   // scene.add(sphere);
+    //   pivot.add(sphere);
+    //   sphereList.push(sphere);
 
-      setTimeout(() => {
-        removeObject(sphere);
-      }, 15000)
-    }, 800);
+    //   setTimeout(() => {
+    //     removeObject(sphere);
+    //   }, 15000)
+    // }, 800);
 
     // renderer.render(scene, camera);
 
     const loader = new THREE.GLTFLoader();
+
+    const dnaList = [];
+    let humanDNA_1 = null;
+    let humanDNA_2 = null;
+    let humanDNA_3 = null;
+
+    loader.load("./assets/models/humanDNA.gltf", (gltf) => {
+      gltf.scene.castShadow = true;
+      gltf.scene.position.z = -2.3;
+      humanDNA_1 = gltf.scene.clone();
+      humanDNA_1.scale.set(4, 4, 4);
+      humanDNA_1.position.y = 1;
+      pivot.add(humanDNA_1);
+      dnaList.push(humanDNA_1);
+      // console.log(humanDNA_1.position.distanceTo(pivot.position))
+
+      humanDNA_2 = gltf.scene.clone();
+      humanDNA_2.scale.set(4, 4, 4);
+      humanDNA_2.position.y = -4;
+      pivot.add(humanDNA_2);
+      dnaList.push(humanDNA_2);
+
+      humanDNA_3 = gltf.scene.clone();
+      humanDNA_3.scale.set(4, 4, 4);
+      humanDNA_3.position.y = -9;
+      pivot.add(humanDNA_3);
+      dnaList.push(humanDNA_3);
+      console.log(humanDNA_3)
+
+    }, (e) => {
+      console.log(e);
+    })
 
     // loader.load("./assets/models/dna.glb", (gltf) => {
     //   scene.add(gltf.scene);
@@ -318,11 +351,19 @@ document.addEventListener("DOMContentLoaded", () => {
     // })
 
     function animate() {
-      sphereList.forEach(el => {
-        el.position.y += 0.01;
-        // el.position.x += 0.002;
+      // sphereList.forEach(el => {
+      //   el.position.y += 0.01;
+      //   // el.position.x += 0.002;
+      // })
+      pivot.rotateY(0.003)
+
+      dnaList.forEach(item => {
+        item.position.y += 0.003;
+        if (item.position.distanceTo(pivot.position) > 6 && item.position.y >= 6) {
+          item.position.y = -9;
+        } 
       })
-      pivot.rotateY(0.002)
+
       renderer.render(scene, camera);
       requestAnimationFrame(animate);
     }
