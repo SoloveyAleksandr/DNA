@@ -1,0 +1,134 @@
+.spinner {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &._hidden {
+    animation: 1s hideSpinner linear;
+  }
+
+  &-dna {
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    // width: 90%;
+    // height: 13vw;
+    // text-align: center;
+    // overflow: hidden;
+    width: 80vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__section {
+      // position: relative;
+      // margin: 0 5px;
+      // width: 2.6vw;
+      // height: 13vw;
+      // display: inline-block;
+      position: relative;
+      height: 13vw;
+    }
+
+    &__node {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2.6vw;
+      height: 2.6vw;
+      border-radius: 100%;
+
+      &_top {
+        background: $accent;
+        animation: 4s topNode ease-in-out infinite;
+      }
+
+      &_bottom {
+        top: auto;
+        bottom: 0;
+        background: $accent;
+        animation: 4s bottomNode ease-in-out infinite;
+      }
+    }
+  }
+}
+
+@keyframes topNode {
+  0% {
+    transform: scale(0.5);
+    top: 0;
+    z-index: 10;
+    opacity: 0.75;
+  }
+
+  25% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(0.5);
+    top: 10.4vw;
+    z-index: 0;
+    opacity: 0.75;
+  }
+
+  75% {
+    transform: scale(0.25);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(0.5);
+    top: 0;
+    opacity: 0.75;
+  }
+}
+
+@keyframes bottomNode {
+  0% {
+    transform: scale(0.5);
+    bottom: 0;
+    opacity: 0.75;
+  }
+
+  25% {
+    transform: scale(0.25);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scale(0.5);
+    bottom: 10.4vw;
+    opacity: 0.75;
+  }
+
+  75% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.5);
+    bottom: 0;
+    opacity: 0.75;
+  }
+}
+
+@keyframes hideSpinner {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

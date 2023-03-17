@@ -118,13 +118,21 @@
     &_4 {
       width: 90vw;
 
+      .main-about-slide__number {
+        width: 6vw;
+      }
+
       .main-about__description {
         max-width: 50.5rem;
       }
     }
 
     &_5 {
-      width: 85vw;
+      width: 84vw;
+
+      .main-about-slide__number {
+        width: 6vw;
+      }
 
       .main-about__subtitle {
         max-width: 41rem;
@@ -136,7 +144,11 @@
     }
 
     &_6 {
-      width: 80vw;
+      width: 78vw;
+
+      .main-about-slide__number {
+        width: 6vw;
+      }
 
       .main-about__subtitle {
         max-width: 48.9rem;
@@ -148,7 +160,11 @@
     }
 
     &_7 {
-      width: 75vw;
+      width: 72vw;
+
+      .main-about-slide__number {
+        width: 6vw;
+      }
 
       .main-about__subtitle {
         max-width: 36.6rem;
@@ -160,14 +176,19 @@
     }
 
     &_8 {
-      width: 70vw;
+      width: 66vw;
+
+      .main-about-slide__number {
+        width: 8vw;
+      }
 
       .main-about__subtitle {
         max-width: 33.4rem;
       }
 
       .main-about__description {
-        max-width: 33.8rem;
+        max-width: 31.3rem;
+        // max-width: 33.8rem;
       }
     }
   }
@@ -184,17 +205,18 @@
 
     &__number {
       font-family: 'Raleway', sans-serif;
-
       font-weight: 900;
       font-size: 9.6rem;
       line-height: 11.3rem;
       width: 5vw;
+      // width: fit-content;
       height: 100%;
       padding-top: 83vh;
+      padding-left: 2rem;
       display: flex;
-      justify-content: center;
-      border-right: 0.3rem solid $accent;
-      // border-left: 0.3rem solid #464646;
+      justify-content: flex-start;
+      // border-right: 0.3rem solid $accent;
+      border-left: 0.3rem solid $accent;
       transition: all .3s;
 
       &._active {
@@ -202,7 +224,7 @@
         font-size: 6.4rem;
         line-height: 7.5rem;
         border-right: 0.3rem solid #464646;
-        // border-left: 0.3rem solid transparent;
+        border-left: 0.3rem solid transparent;
 
         span {
           background: #464646;

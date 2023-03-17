@@ -49,6 +49,8 @@ svg {
   transition: all 0.1s linear;
 }
 
+@import "./blocks/spinner";
+
 @import "./blocks/header";
 @import "./blocks/menu";
 @import "./blocks/footer";
@@ -56,5 +58,5 @@ svg {
 
 @import "./blocks/main-top";
 @import "./blocks/dna-about";
-@import "./blocks/main.about";
+@import "./blocks/main-about";
 @import "./blocks/main-slider";

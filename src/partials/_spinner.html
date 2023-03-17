@@ -1,0 +1,26 @@
+<div class="spinner">
+  <div class="spinner-dna">
+    <div class="spinner-dna__section">
+      <div class="spinner-dna__node spinner-dna__node_top"></div>
+      <div class="spinner-dna__node spinner-dna__node_bottom"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const spinContainer = document.querySelector(".spinner-dna");
+  const spinItem = spinContainer.querySelector(".spinner-dna__section");
+
+  const fragment = document.createDocumentFragment();
+  for (let i = 0; i < 20; i++) {
+    const item = spinItem.cloneNode(true);
+    const spin_1 = item.querySelector(".spinner-dna__node_top");
+    const spin_2 = item.querySelector(".spinner-dna__node_bottom");
+
+    spin_1.style.animationDelay = (i + 1) * -300 + 'ms';
+    spin_2.style.animationDelay = (i + 1) * -300 + 'ms';
+
+    fragment.appendChild(item);
+  }
+  spinContainer.appendChild(fragment);
+</script>

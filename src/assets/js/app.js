@@ -85,8 +85,8 @@ document.addEventListener("DOMContentLoaded", () => {
       duration: 1,
       ease: "none",
       x: -1 * (document.querySelector(".main-about-slide_8 .main-about-box_8").offsetWidth) + "px",
-      onComplete: () => document.querySelector(".main-about-slide__number_8").classList.add("_active"),
-      onStart: () => document.querySelector(".main-about-slide__number_8").classList.remove("_active"),
+      // onComplete: () => document.querySelector(".main-about-slide__number_8").classList.add("_active"),
+      // onStart: () => document.querySelector(".main-about-slide__number_8").classList.remove("_active"),
     })
 
 
@@ -313,7 +313,6 @@ document.addEventListener("DOMContentLoaded", () => {
       humanDNA_1.position.y = 1;
       pivot.add(humanDNA_1);
       dnaList.push(humanDNA_1);
-      // console.log(humanDNA_1.position.distanceTo(pivot.position))
 
       humanDNA_2 = gltf.scene.clone();
       humanDNA_2.scale.set(4, 4, 4);
@@ -326,7 +325,6 @@ document.addEventListener("DOMContentLoaded", () => {
       humanDNA_3.position.y = -9;
       pivot.add(humanDNA_3);
       dnaList.push(humanDNA_3);
-      console.log(humanDNA_3)
 
     }, (e) => {
       console.log(e);
@@ -361,7 +359,7 @@ document.addEventListener("DOMContentLoaded", () => {
         item.position.y += 0.003;
         if (item.position.distanceTo(pivot.position) > 6 && item.position.y >= 6) {
           item.position.y = -9;
-        } 
+        }
       })
 
       renderer.render(scene, camera);
@@ -371,3 +369,15 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(animate);
   }
 });
+
+window.onload = () => {
+  const spinner = document.querySelector(".spinner");
+  if (spinner) {
+    spinner.addEventListener("animationend", () => {
+      // spinner.remove();
+      document.body.classList.remove("_hidden");
+      spinner.style.display = "none";
+    })
+    spinner.classList.add("_hidden");
+  }
+}
