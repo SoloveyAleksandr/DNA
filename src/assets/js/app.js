@@ -1,4 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  SmoothScroll({
+    // Время скролла 400 = 0.4 секунды
+    animationTime: 800,
+    // Размер шага в пикселях 
+    stepSize: 60,
+
+    // Дополнительные настройки:
+
+    // Ускорение 
+    accelerationDelta: 30,
+    // Максимальное ускорение
+    accelerationMax: 2,
+
+    // Поддержка клавиатуры
+    keyboardSupport: true,
+    // Шаг скролла стрелками на клавиатуре в пикселях
+    arrowScroll: 50,
+
+    // Pulse (less tweakable)
+    // ratio of "tail" to "acceleration"
+    pulseAlgorithm: true,
+    pulseScale: 4,
+    pulseNormalize: 1,
+
+    // Поддержка тачпада
+    touchpadSupport: true,
+  })
+
   if (document.querySelector(".main-top")) {
     const mainTopWrapper = document.querySelector(".main-top-wrapper");
     const mainTop = mainTopWrapper.querySelector(".main-top");
@@ -6,9 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const mainTL = gsap.timeline({
       scrollTrigger: {
         trigger: mainTopWrapper,
-        scrub: 1,
+        scrub: 0,
         pin: true,
-        end: "200%",
+        end: "300%",
       }
     })
       .to(mainTop, {
@@ -16,6 +45,10 @@ document.addEventListener("DOMContentLoaded", () => {
         ease: "none",
         x: -1 * (mainTop.scrollWidth - mainTopWrapper.clientWidth) + "px",
       })
+    const delayTL = gsap.timeline({
+      duration: 0.2,
+    })
+    mainTL.add(delayTL);
   }
 
   if (document.querySelector(".main-about-wrapper")) {
@@ -26,9 +59,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const mainTL = gsap.timeline({
       scrollTrigger: {
         trigger: mainAboutWrapper,
-        scrub: 1,
+        scrub: 0,
         pin: true,
-        end: "500%",
+        end: "900%",
         onUpdate: self => mainAboutTimeline.style.width = `${self.progress * 100}%`
       }
     })
@@ -88,6 +121,11 @@ document.addEventListener("DOMContentLoaded", () => {
       // onComplete: () => document.querySelector(".main-about-slide__number_8").classList.add("_active"),
       // onStart: () => document.querySelector(".main-about-slide__number_8").classList.remove("_active"),
     })
+
+    const delayTL = gsap.timeline({
+      duration: 0.2,
+    })
+    mainTL.add(delayTL);
 
 
     // mainTL.to(".main-about-slide_3", {
@@ -242,61 +280,12 @@ document.addEventListener("DOMContentLoaded", () => {
     //основной свет
     let ambientLight = new THREE.AmbientLight("#00C8B7", 0.5);
     scene.add(ambientLight);
-
-    let geometry = new THREE.SphereGeometry(0.8, 32, 32);
-    let material = new THREE.MeshPhongMaterial({
-      color: "#87E3CA",
-      shininess: 100
-    });
-    // let sphere = new THREE.Mesh(geometry, material);
-    // scene.add(sphere);
-
-    // function removeObject(item) {
-    //   pivot.remove(item);
-    //   sphereList.shift();
-    // }
+    
     const pivot = new THREE.Group();
     scene.add(pivot);
     pivot.position.x = 0.25;
     pivot.rotation.z = -0.2;
-
-    // const sphereList = [];
-
-    // let start = 5;
-    // for (let i = 0; i < 30; i++) {
-    //   let geometry = new THREE.SphereGeometry(gsap.utils.random(0.1, 0.6), 16, 16);
-    //   const sphere = new THREE.Mesh(geometry, material);
-    //   sphere.position.x = gsap.utils.random(-1, 1);
-    //   sphere.position.z = gsap.utils.random(-1, 1);
-    //   sphere.position.y = start;
-
-    //   start -= 0.4;
-    //   // scene.add(sphere);
-    //   pivot.add(sphere);
-    //   sphereList.push(sphere);
-
-    //   setTimeout(() => {
-    //     removeObject(sphere);
-    //   }, 15000)
-    // }
-
-    // setInterval(() => {
-    //   let geometry = new THREE.SphereGeometry(gsap.utils.random(0.1, 0.6), 16, 16);
-    //   const sphere = new THREE.Mesh(geometry, material);
-    //   sphere.position.x = gsap.utils.random(-1, 1);
-    //   sphere.position.z = gsap.utils.random(-1, 1);
-    //   sphere.position.y = -5;
-
-    //   // scene.add(sphere);
-    //   pivot.add(sphere);
-    //   sphereList.push(sphere);
-
-    //   setTimeout(() => {
-    //     removeObject(sphere);
-    //   }, 15000)
-    // }, 800);
-
-    // renderer.render(scene, camera);
+    // pivot.scale.set(2, 2, 2);
 
     const loader = new THREE.GLTFLoader();
 
@@ -330,30 +319,8 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log(e);
     })
 
-    // loader.load("./assets/models/dna.glb", (gltf) => {
-    //   scene.add(gltf.scene);
-    // }, (e) => {
-    //   console.log(e);
-    // })
-
-    // let model = null;
-    // loader.load("./assets/models/dna.glb", (glb) => {
-    //   // loader.load("./assets/models/DNA.gltf", (glb) => {
-    //   model = glb.scene;
-    //   model.position.x = -1;
-    //   model.scale.set(3, 3, 3);
-    //   scene.add(model);
-    //   console.log(model);
-    // }, (e) => {
-    //   console.log(e);
-    // })
-
     function animate() {
-      // sphereList.forEach(el => {
-      //   el.position.y += 0.01;
-      //   // el.position.x += 0.002;
-      // })
-      pivot.rotateY(0.003)
+      pivot.rotateY(-0.003);
 
       dnaList.forEach(item => {
         item.position.y += 0.003;
@@ -374,7 +341,6 @@ window.onload = () => {
   const spinner = document.querySelector(".spinner");
   if (spinner) {
     spinner.addEventListener("animationend", () => {
-      // spinner.remove();
       document.body.classList.remove("_hidden");
       spinner.style.display = "none";
     })

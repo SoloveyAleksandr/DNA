@@ -22,6 +22,17 @@ body {
   }
 }
 
+body::-webkit-scrollbar {
+  width: 1rem;               /* ширина scrollbar */
+}
+body::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1)   /* цвет дорожки */
+}
+body::-webkit-scrollbar-thumb {
+  background-color: $accent;    /* цвет плашки */
+  border-radius: 1rem;       /* закругления плашки */
+}
+
 .container {
   max-width: 179rem;
   padding: 0 1.5rem;
