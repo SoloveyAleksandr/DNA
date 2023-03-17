@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     touchpadSupport: true,
   })
 
-  if (document.querySelector(".main-top")) {
+  if (document.querySelector(".main-top") && window.matchMedia("(min-width: 1024px)").matches) {
     const mainTopWrapper = document.querySelector(".main-top-wrapper");
     const mainTop = mainTopWrapper.querySelector(".main-top");
 
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     mainTL.add(delayTL);
   }
 
-  if (document.querySelector(".main-about-wrapper")) {
+  if (document.querySelector(".main-about-wrapper") && window.matchMedia("(min-width: 1024px)").matches) {
 
     const mainAboutWrapper = document.querySelector(".main-about-wrapper");
     const mainAboutTimeline = mainAboutWrapper.querySelector(".main-about-timeline__fill");
@@ -217,9 +217,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const startWindowSize = window.innerWidth;
 
-    const breakpoints = [375, 500, 850, 1200, 1920];
+    const breakpoints = [480, 744, 1023, 1920];
     let maxBreakpoint = Infinity;
-    let minBreakpoint = null;
+    let minBreakpoint = 0;
 
     for (let i = 0; i < breakpoints.length; i++) {
       if (startWindowSize < breakpoints[i]) {
@@ -228,7 +228,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    for (let i = breakpoints.length - 1; i > 0; i--) {
+    for (let i = breakpoints.length - 1; i > -1; i--) {
       if (startWindowSize > breakpoints[i]) {
         minBreakpoint = breakpoints[i];
         break;
@@ -280,11 +280,16 @@ document.addEventListener("DOMContentLoaded", () => {
     //основной свет
     let ambientLight = new THREE.AmbientLight("#00C8B7", 0.5);
     scene.add(ambientLight);
-    
+
     const pivot = new THREE.Group();
     scene.add(pivot);
-    pivot.position.x = 0.25;
-    pivot.rotation.z = -0.2;
+
+    if (window.matchMedia("(max-width: 744px)").matches) {
+      pivot.position.x = 0.25;
+    } else {
+      pivot.position.x = 0.25;
+      pivot.rotation.z = -0.2;
+    }
     // pivot.scale.set(2, 2, 2);
 
     const loader = new THREE.GLTFLoader();
@@ -294,46 +299,114 @@ document.addEventListener("DOMContentLoaded", () => {
     let humanDNA_2 = null;
     let humanDNA_3 = null;
 
-    loader.load("./assets/models/humanDNA.gltf", (gltf) => {
+    if (window.matchMedia("(min-width: 1024px)").matches) {
+      // loader.load("./assets/models/humanDNA.gltf", (gltf) => {
+      //   gltf.scene.castShadow = true;
+      //   gltf.scene.position.z = -2.3;
+      //   humanDNA_1 = gltf.scene.clone();
+      //   humanDNA_1.scale.set(4, 4, 4);
+      //   humanDNA_1.position.y = 1;
+      //   pivot.add(humanDNA_1);
+      //   dnaList.push(humanDNA_1);
+
+      //   humanDNA_2 = gltf.scene.clone();
+      //   humanDNA_2.scale.set(4, 4, 4);
+      //   humanDNA_2.position.y = -4;
+      //   pivot.add(humanDNA_2);
+      //   dnaList.push(humanDNA_2);
+
+      //   humanDNA_3 = gltf.scene.clone();
+      //   humanDNA_3.scale.set(4, 4, 4);
+      //   humanDNA_3.position.y = -9;
+      //   pivot.add(humanDNA_3);
+      //   dnaList.push(humanDNA_3);
+
+      // }, (e) => {
+      //   console.log(e);
+      // });
+    //   loader.load("./assets/models/DNA.glb", (gltf) => {
+    //     gltf.scene.castShadow = true;
+    //     gltf.scene.scale.set(1, 1, 1);
+    //     gltf.scene.rotateX(Math.PI/ 2);
+
+    //     gltf.scene.position.z = -20;
+    //     humanDNA_1 = gltf.scene.clone();
+    //     humanDNA_1.position.y = -6;
+    //     pivot.add(humanDNA_1);
+    //     dnaList.push(humanDNA_1);
+    //   }, (e) => {
+    //     console.log(e);
+    //   });
+
+    //   function animate() {
+    //     // pivot.rotateY(-0.003);
+
+    //     // dnaList.forEach(item => {
+    //     //   item.position.y += 0.003;
+    //     //   if (item.position.distanceTo(pivot.position) > 6 && item.position.y >= 6) {
+    //     //     item.position.y = -9;
+    //     //   }
+    //     // })
+
+    //     renderer.render(scene, camera);
+    //     requestAnimationFrame(animate);
+    //   }
+
+    //   requestAnimationFrame(animate);
+    // }
+
+    loader.load("./assets/models/dna.gltf", (gltf) => {
       gltf.scene.castShadow = true;
-      gltf.scene.position.z = -2.3;
+      gltf.scene.scale.set(1, 1, 1);
+      gltf.scene.rotateZ(Math.PI/ 2);
+      gltf.scene.position.z = -50;
+      gltf.scene.position.x = -5;
+
       humanDNA_1 = gltf.scene.clone();
-      humanDNA_1.scale.set(4, 4, 4);
-      humanDNA_1.position.y = 1;
       pivot.add(humanDNA_1);
       dnaList.push(humanDNA_1);
-
-      humanDNA_2 = gltf.scene.clone();
-      humanDNA_2.scale.set(4, 4, 4);
-      humanDNA_2.position.y = -4;
-      pivot.add(humanDNA_2);
-      dnaList.push(humanDNA_2);
-
-      humanDNA_3 = gltf.scene.clone();
-      humanDNA_3.scale.set(4, 4, 4);
-      humanDNA_3.position.y = -9;
-      pivot.add(humanDNA_3);
-      dnaList.push(humanDNA_3);
-
     }, (e) => {
       console.log(e);
-    })
+    });
 
     function animate() {
-      pivot.rotateY(-0.003);
+      // pivot.rotateY(-0.003);
 
-      dnaList.forEach(item => {
-        item.position.y += 0.003;
-        if (item.position.distanceTo(pivot.position) > 6 && item.position.y >= 6) {
-          item.position.y = -9;
-        }
-      })
+      // dnaList.forEach(item => {
+      //   item.position.y += 0.003;
+      //   if (item.position.distanceTo(pivot.position) > 6 && item.position.y >= 6) {
+      //     item.position.y = -9;
+      //   }
+      // })
 
       renderer.render(scene, camera);
       requestAnimationFrame(animate);
     }
 
     requestAnimationFrame(animate);
+  }
+
+    if (window.matchMedia("(max-width: 1023px)").matches) {
+      loader.load("./assets/models/humanDNA.gltf", (gltf) => {
+        gltf.scene.castShadow = true;
+        gltf.scene.position.z = -3;
+        humanDNA_1 = gltf.scene.clone();
+        humanDNA_1.scale.set(5, 5, 5);
+        pivot.add(humanDNA_1);
+        dnaList.push(humanDNA_1);
+      }, (e) => {
+        console.log(e);
+      });
+
+      function animate() {
+        pivot.rotateY(-0.003);
+
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
+      }
+
+      requestAnimationFrame(animate);
+    }
   }
 });
 

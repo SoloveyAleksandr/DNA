@@ -23,14 +23,20 @@ body {
 }
 
 body::-webkit-scrollbar {
-  width: 1rem;               /* ширина scrollbar */
+  width: 1rem;
+  /* ширина scrollbar */
 }
+
 body::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1)   /* цвет дорожки */
+  background: rgba(0, 0, 0, 0.1)
+    /* цвет дорожки */
 }
+
 body::-webkit-scrollbar-thumb {
-  background-color: $accent;    /* цвет плашки */
-  border-radius: 1rem;       /* закругления плашки */
+  background-color: $accent;
+  /* цвет плашки */
+  border-radius: 1rem;
+  /* закругления плашки */
 }
 
 .container {
