@@ -118,34 +118,12 @@ document.addEventListener("DOMContentLoaded", () => {
       duration: 1,
       ease: "none",
       x: -1 * (document.querySelector(".main-about-slide_8 .main-about-box_8").offsetWidth) + "px",
-      // onComplete: () => document.querySelector(".main-about-slide__number_8").classList.add("_active"),
-      // onStart: () => document.querySelector(".main-about-slide__number_8").classList.remove("_active"),
     })
 
     const delayTL = gsap.timeline({
       duration: 0.2,
     })
     mainTL.add(delayTL);
-
-
-    // mainTL.to(".main-about-slide_3", {
-    //   duration: 1,
-    //   ease: "none",
-    //   x: -1 * document.querySelector(".main-about-slide_3 .main-about-box_3").scrollWidth + "px",
-    //   onComplete: () => console.log("complete")
-    // })
-    // mainTL.to(".main-about-slide_4", {
-    //   duration: 1,
-    //   ease: "none",
-    //   x: -1 * document.querySelector(".main-about-slide_4 .main-about-box_4").scrollWidth + "px",
-    //   onComplete: () => console.log("complete")
-    // })
-    // mainTL.to(".main-about-slide_5", {
-    //   duration: 1,
-    //   ease: "none",
-    //   x: -1 * document.querySelector(".main-about-slide_5 .main-about-box_5").scrollWidth + "px",
-    //   onComplete: () => console.log("complete")
-    // })
   } else if (document.querySelector(".main-about-wrapper") && window.matchMedia("(max-width: 1023px)").matches) {
     const template = document.querySelector(".main-about-wrapper template").content.cloneNode(true);
     const templateSwiper = template.querySelector(".main-about-swiper-wrapper");
@@ -248,6 +226,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     new Menu(".header-nav-btns__btn_burger", ".header-nav-btns__btn_profile", ".menu");
+  }
+
+  const footer = document.querySelector(".footer");
+  if (footer) {
+    const container = footer.querySelector(".footer-container");
+    const fragment = document.createDocumentFragment();
+    const logo = footer.querySelector(".footer-logo").cloneNode(true);
+    const nav = footer.querySelector(".footer-nav").cloneNode(true);
+    const contacts = footer.querySelector(".footer-contacts").cloneNode(true);
+    const legal = footer.querySelector(".footer-legal").cloneNode(true);
+    const btn = footer.querySelector(".footer-right__btn").cloneNode(true);
+    const list = footer.querySelector(".footer-right-list").cloneNode(true);
+
+    container.innerHTML = "";
+    fragment.appendChild(logo);
+    fragment.appendChild(nav);
+    fragment.appendChild(contacts);
+    fragment.appendChild(legal);
+    fragment.appendChild(btn);
+    fragment.appendChild(list);
+
+    container.appendChild(fragment);
   }
 
   const canvas = document.querySelector(".main-top-canvas");

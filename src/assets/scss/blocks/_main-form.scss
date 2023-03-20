@@ -1,9 +1,26 @@
 .main-form {
   padding: 18rem 0;
 
+  @include breakpoint($xl-bp) {
+    padding: 11.9rem 0rem 13rem;
+  }
+
+  @include breakpoint($xs-bp) {
+    padding: calc(10rem * 1.5) 0;
+  }
+
   &-container {
     display: flex;
     gap: 19rem;
+
+    @include breakpoint($xl-bp) {
+      flex-direction: column-reverse;
+      gap: 8rem;
+    }
+
+    @include breakpoint($xs-bp) {
+      gap: calc(2rem * 1.5);
+    }
   }
 
   &__form {
@@ -12,6 +29,15 @@
     flex-direction: column;
     gap: 2rem;
     width: 52rem;
+
+    @include breakpoint($xl-bp) {
+      margin: 0 auto;
+    }
+
+    @include breakpoint($xs-bp) {
+      width: 100%;
+      gap: calc(2rem * 1.5);
+    }
   }
 
   &__input {
@@ -34,6 +60,13 @@
     &:focus {
       border-color: $accent;
     }
+
+    @include breakpoint($xs-bp) {
+      font-size: calc(1.4rem * 1.5);
+      line-height: calc(1.8rem * 1.5);
+      height: calc(5rem * 1.5);
+      padding: 0rem 1rem;
+    }
   }
 
   &__legal {
@@ -44,6 +77,12 @@
     margin-top: -1rem;
     max-width: 40rem;
     padding-left: 2.5rem;
+
+    @include breakpoint($xs-bp) {
+      font-size: calc(1.2rem * 1.5);
+      line-height: calc(1.5rem * 1.5);
+      padding: 0;
+    }
   }
 
   &__btn {
@@ -63,6 +102,11 @@
       color: $accent;
       border-color: $accent;
     }
+
+    @include breakpoint($xs-bp) {
+      font-size: calc(1.4rem * 1.5);
+      line-height: calc(1.7rem * 1.5);
+    }
   }
 
   &__title {
@@ -70,20 +114,28 @@
     font-size: 6.4rem;
     line-height: 7.7rem;
 
+    @include breakpoint($xl-bp) {
+      font-size: 4.8rem;
+      line-height: 5.8rem;
+    }
+
+    @include breakpoint($xs-bp) {
+      font-size: calc(1.8rem * 1.5);
+      line-height: calc(2.2rem * 1.5);
+    }
+
     span {
       font-weight: inherit;
       font-size: inherit;
       line-height: inherit;
-      background: linear-gradient(
-        90deg,
-        #31a49a 0%,
-        #39bdb3 14.81%,
-        #41d7cd 30.82%,
-        #44e0d6 48.08%,
-        #48d6dc 62.2%,
-        #4fc4e5 80.1%,
-        #5aa7f5 100%
-      );
+      background: linear-gradient(90deg,
+          #31a49a 0%,
+          #39bdb3 14.81%,
+          #41d7cd 30.82%,
+          #44e0d6 48.08%,
+          #48d6dc 62.2%,
+          #4fc4e5 80.1%,
+          #5aa7f5 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
