@@ -2,10 +2,22 @@
   height: 100%;
   display: flex;
 
+  @include breakpoint($xl-bp) {
+    display: block;
+    padding: 0 1.5rem;
+  }
+
   &-wrapper {
     height: 100vh;
     position: relative;
     overflow: hidden;
+
+    @include breakpoint($xl-bp) {
+      height: unset;
+      position: static;
+      overflow: unset;
+      margin-bottom: 10rem;
+    }
   }
 
   &__title {
@@ -24,6 +36,17 @@
       background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
+    @include breakpoint($xl-bp) {
+      font-size: 4.8rem;
+      line-height: 5.8rem;
+      margin-bottom: 2.9rem;
+    }
+
+    @include breakpoint($xs-bp) {
+      font-size: calc(2.4rem * 1.5);
+      line-height: calc(2.9rem * 1.5);
+    }
   }
 
   &__subtitle {
@@ -32,6 +55,17 @@
     line-height: 4.6rem;
     letter-spacing: 0.03em;
     max-width: 58.3rem;
+
+    @include breakpoint($xl-bp) {
+      margin-bottom: 4rem;
+      max-width: 100%;
+    }
+
+    @include breakpoint($xs-bp) {
+      font-size: calc(1.8rem * 1.5);
+      line-height: calc(2.3rem * 1.5);
+      margin-bottom: calc(2rem * 1.5);
+    }
   }
 
   &__description {
@@ -39,6 +73,17 @@
     line-height: 3.1rem;
     letter-spacing: 0.03em;
     max-width: 76.3rem;
+
+    @include breakpoint($xl-bp) {
+      font-size: 1.8rem;
+      line-height: 2.3rem;
+      max-width: 100%;
+    }
+
+    @include breakpoint($xs-bp) {
+      font-size: calc(1.2rem * 1.5);
+      line-height: calc(1.5rem * 1.5);
+    }
   }
 
   &-timeline {
@@ -49,6 +94,10 @@
     background-color: #DCDCDC;
     bottom: 0;
     left: 0;
+
+    @include breakpoint($xl-bp) {
+      display: none;
+    }
 
     &__fill {
       height: 100%;
@@ -77,6 +126,11 @@
     &-img {
       height: 100%;
       width: 73.5rem;
+
+      @include breakpoint($xl-bp) {
+        width: 100%;
+        height: 58.7vw;
+      }
 
       img {
         object-fit: cover;
@@ -198,6 +252,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    @include breakpoint($xl-bp) {
+      gap: 4rem;
+    }
   }
 
   &-slide {
@@ -235,6 +293,14 @@
         }
       }
 
+      @include breakpoint($xl-bp) {
+        width: fit-content;
+        height: unset;
+        padding: 0;
+        display: block;
+        border: none;
+      }
+
       span {
         display: inline-block;
         font-family: inherit;
@@ -245,6 +311,76 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+      }
+    }
+  }
+
+  &-swiper {
+    width: calc(100% + 3rem);
+    margin: 0 -1.5rem;
+
+    &-btns {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 3rem;
+      margin-bottom: 2.9rem;
+
+      &__btn {
+        width: 6.2rem;
+        height: 2.2rem;
+        border: none;
+        background-color: transparent;
+        padding: 0;
+        margin: 0;
+
+        &.swiper-button-disabled {
+          opacity: 0.5;
+          pointer-events: none;
+        }
+
+        svg {
+          object-fit: contain;
+          object-position: center center;
+          fill: $black;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    &-slide {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      background-color: $white;
+
+      &__container {
+        padding: 0 1.5rem;
+        display: grid;
+        column-gap: 4rem;
+
+        @include breakpoint($xs-bp) {
+          column-gap: calc(2rem * 1.5);
+        }
+
+        &> {
+          .main-about-slide__number {
+            grid-area: 1/1/2/2;
+          }
+
+          .main-about__subtitle {
+            grid-area: 1/2/2/3;
+          }
+
+          .main-about__description {
+            grid-area: 2/2/3/3;
+
+            @include breakpoint($xs-bp) {
+              grid-area: 2/1/3/3;
+            }
+          }
+        }
       }
     }
   }

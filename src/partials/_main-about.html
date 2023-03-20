@@ -4,6 +4,32 @@
     <div class="main-about-timeline__fill"></div>
   </div>
 
+  <template>
+    <h3 class="main-about__title"></h3>
+
+    <div class="main-about-swiper-btns">
+      <button type="button" class="main-about-swiper-btns__btn main-about-swiper-btns__bnt_prev">
+        <svg>
+          <use href="#arrow-icon_left"></use>
+        </svg>
+      </button>
+      <button type="button" class="main-about-swiper-btns__btn main-about-swiper-btns__bnt_next">
+        <svg>
+          <use href="#arrow-icon_right"></use>
+        </svg>
+      </button>
+    </div>
+
+    <div class="swiper main-about-swiper">
+      <div class="swiper-wrapper main-about-swiper-wrapper">
+        <div class="swiper-slide main-about-swiper-slide">
+          <div class="main-about-swiper-slide__container"></div>
+        </div>
+      </div>
+    </div>
+
+  </template>
+
   <section class="main-about">
 
     <div class="main-about-slide main-about-slide_1">
@@ -28,13 +54,9 @@
               <p class="main-about__description">
                 ДНК-тест даёт информацию: какие препараты и нутрицевтики стоит принимать Вам, эффективные упражнения
                 Кинезиогенной терапии (Kinesis — движение, Genesis — происхождение), какие методики психотерапии
-                сработают
-                лучше, продукты питания содержащие повышенное количество необходимых аминокислот и другие рекомендации
-                по
-                образу жизни — для скорейшего восстановления мозга и баланса нужных нейромедиаторов («гормонов
-                счастья»),
-                с
-                целью нормализации психо-эмоционального состояния;
+                сработают лучше, продукты питания содержащие повышенное количество необходимых аминокислот и другие
+                рекомендации по образу жизни — для скорейшего восстановления мозга и баланса нужных нейромедиаторов
+                («гормонов счастья»), с целью нормализации психо-эмоционального состояния;
               </p>
             </div>
           </div>
@@ -55,13 +77,12 @@
 
               <div class="main-about-content">
                 <h5 class="main-about__subtitle">
-                  Нам удалось собрать команду ведущих профессионалов
-                  в одном пространстве
+                  Полностью индивидуальный подход с самого начала погружения в программу
                 </h5>
 
                 <p class="main-about__description">
-                  Элитарный состав преподавателей, психологов, спикеров и Менторов программы — который Вы никогда не
-                  встретите в одном и том же месте одновременно.
+                  Только ДНК-тест поможет узнать первопричину заболевания и разработать персональную программу
+                  восстановления, а онлайн формат сделать её более удобной и доступной каждому
                 </p>
               </div>
             </div>
@@ -178,21 +199,22 @@
                     <div class="main-about-slide__number main-about-slide__number_7">
                       <span>VI.</span>
                     </div>
-  
+
                     <div class="main-about-box__container">
                       <div class="main-about-inner">
                         <div class="main-about-box-img">
                           <img src="./assets/images/main-about-7.jpg" alt="main-about">
                         </div>
-  
+
                         <div class="main-about-content">
                           <h5 class="main-about__subtitle">
-                            Идеально подходит для тех, кто хочет сохранить контроль над своим употреблением
+                            Вам не нужно изолировать себя от общества
                           </h5>
-  
+
                           <p class="main-about__description">
-                            Идеально подходит для тех, кто осознаёт наличие проблемы, употребляя пока только в выходные
-                            или праздничные дни, но при этом хочет сохранить контроль над своим употреблением
+                            Наоборот, встраивайте свой новый образ жизни в реальный социум. Тогда процесс социализации
+                            пройдёт гораздо быстрее и безболезненнее. Мировой опыт показывает высокую эффективность
+                            именно такого подхода
                           </p>
                         </div>
                       </div>
@@ -204,21 +226,22 @@
                       <div class="main-about-slide__number main-about-slide__number_8">
                         <span>VII.</span>
                       </div>
-    
+
                       <div class="main-about-box__container">
                         <div class="main-about-inner">
                           <div class="main-about-box-img">
                             <img src="./assets/images/main-about-8.jpg" alt="main-about">
                           </div>
-    
+
                           <div class="main-about-content">
                             <h5 class="main-about__subtitle">
-                              Идеально подходит для тех, кто хочет сохранить контроль над своим употреблением
+                              Программа ДНКОД — это универсальное решение проблемы в ситуации любой сложности
                             </h5>
-    
+
                             <p class="main-about__description">
-                              Идеально подходит для тех, кто осознаёт наличие проблемы, употребляя пока только в выходные
-                              или праздничные дни, но при этом хочет сохранить контроль над своим употреблением
+                              В случае, если пациенту необходима медицинская помощь, мы можем организовать стационар «на
+                              дому», или госпитализировать его на восстановительный период в одну из наших
+                              клиник-партнёров
                             </p>
                           </div>
                         </div>
@@ -232,31 +255,6 @@
         </div>
       </div>
     </div>
-
-    <!-- <div class="main-about-slide main-about-slide_1">
-      <div class="main-about-box main-about-box_1">
-      </div>
-      <div class="main-about-slide main-about-slide_2">
-        <div class="main-about-box main-about-box_2">
-          <div>1</div>
-        </div>
-        <div class="main-about-slide main-about-slide_3">
-          <div class="main-about-box main-about-box_3">
-            <div>2</div>
-          </div>
-          <div class="main-about-slide main-about-slide_4">
-            <div class="main-about-box main-about-box_4">
-              <div>3</div>
-            </div>
-            <div class="main-about-slide main-about-slide_5">
-              <div class="main-about-box main-about-box_5">
-                <div>4</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
 </div>
 </div>
 

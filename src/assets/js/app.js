@@ -146,6 +146,55 @@ document.addEventListener("DOMContentLoaded", () => {
     //   x: -1 * document.querySelector(".main-about-slide_5 .main-about-box_5").scrollWidth + "px",
     //   onComplete: () => console.log("complete")
     // })
+  } else if (document.querySelector(".main-about-wrapper") && window.matchMedia("(max-width: 1023px)").matches) {
+    const template = document.querySelector(".main-about-wrapper template").content.cloneNode(true);
+    const templateSwiper = template.querySelector(".main-about-swiper-wrapper");
+
+    const mainSection = document.querySelector(".main-about");
+
+    const slides = gsap.utils.toArray(".main-about-slide");
+    const fragment = document.createDocumentFragment();
+
+    slides.forEach((slide, index) => {
+      if (index === 0) {
+        template.querySelector(".main-about__title").innerHTML = slide.querySelector(".main-about__title").innerHTML;
+      } else {
+        const newSlide = template.querySelector(".main-about-swiper-slide").cloneNode(true);
+        const newSlideContainer = newSlide.querySelector(".main-about-swiper-slide__container");
+
+        newSlideContainer.appendChild(slide.querySelector(".main-about-slide__number"));
+        newSlideContainer.appendChild(slide.querySelector(".main-about__subtitle"));
+        newSlideContainer.appendChild(slide.querySelector(".main-about__description"));
+        newSlide.appendChild(slide.querySelector(".main-about-box-img"));
+
+        fragment.appendChild(newSlide);
+      }
+    })
+
+    mainSection.innerHTML = "";
+    templateSwiper.innerHTML = "";
+    templateSwiper.appendChild(fragment);
+    mainSection.appendChild(template);
+
+    new Swiper(".main-about-swiper", {
+      speed: 800,
+      autoHeight: true,
+      navigation: {
+        nextEl: '.main-about-swiper-btns__bnt_next',
+        prevEl: '.main-about-swiper-btns__bnt_prev',
+      },
+      effect: "creative",
+      creativeEffect: {
+        prev: {
+          // will set `translateZ(-400px)` on previous slides
+          translate: [0, 0, -400],
+        },
+        next: {
+          // will set `translateX(100%)` on next slides
+          translate: ['100%', 0, 0],
+        },
+      },
+    })
   }
 
   if (document.querySelector(".main-slider")) {

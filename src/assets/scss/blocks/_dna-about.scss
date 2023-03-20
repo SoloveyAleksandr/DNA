@@ -33,6 +33,7 @@
       background: transparent;
       padding: 0 1.5rem;
       margin-bottom: 2rem;
+      border: none;
     }
 
     @include breakpoint($xs-bp) {
