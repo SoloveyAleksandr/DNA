@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const footer = document.querySelector(".footer");
-  if (footer) {
+  if (footer && window.matchMedia("(max-width: 1023px)").matches) {
     const container = footer.querySelector(".footer-container");
     const fragment = document.createDocumentFragment();
     const logo = footer.querySelector(".footer-logo").cloneNode(true);
@@ -253,15 +253,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.querySelector(".main-top-canvas");
   const FPS = document.getElementById("fps");
 
-  let be = Date.now();
-  let fps = 0;
+  // let be = Date.now();
+  // let fps = 0;
 
-  function fpsCounter() {
-    let now = Date.now();
-    fps = Math.round(1000 / (now - be));
-    be = now;
-    FPS.textContent = fps
-  }
+  // function fpsCounter() {
+  //   let now = Date.now();
+  //   fps = Math.round(1000 / (now - be));
+  //   be = now;
+  //   FPS.textContent = fps
+  // }
 
   if (canvas) {
     const scene = new THREE.Scene();
@@ -379,7 +379,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       function animate() {
-        fpsCounter();
+        // fpsCounter();
         pivot.rotateY(-0.006);
 
         dnaList.forEach((item, index) => {
@@ -410,7 +410,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       function animate() {
-        fpsCounter();
+        // fpsCounter();
         pivot.rotateY(-0.003);
 
         renderer.render(scene, camera);
