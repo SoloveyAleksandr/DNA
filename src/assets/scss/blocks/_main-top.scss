@@ -5,12 +5,12 @@
 
   @include breakpoint($xl-bp) {
     flex-direction: column;
-    padding: 12.3rem 1.5rem 0rem;
+    padding: 9.7rem 1.5rem 0rem;
   }
 
   @include breakpoint($xs-bp) {
     overflow: hidden;
-    padding-top: 5.7rem;
+    padding-top: calc(5.7rem * 1.5);
   }
 
   &-wrapper {
@@ -43,7 +43,8 @@
     }
 
     @include breakpoint($xs-bp) {
-      width: calc(12rem * 1.5);
+      width: 30vw;
+      height: calc(40.6rem * 1.5);
     }
   }
 
@@ -122,7 +123,10 @@
         }
 
         @include breakpoint($xs-bp) {
-          
+          font-size: calc(1.6rem * 1.5);
+          line-height: calc(1.9rem * 1.5);
+          letter-spacing: 0.03em;
+          max-width: calc(21rem * 1.5);
         }
       }
 
@@ -130,6 +134,10 @@
         @include breakpoint($xl-bp) {
           order: 2;
           margin-bottom: 55.7rem;
+        }
+
+        @include breakpoint($xs-bp) {
+          margin-bottom: calc(25.5rem * 1.5);
         }
       }
     }
@@ -155,6 +163,10 @@
         overflow: visible;
       }
 
+      @include breakpoint($xs-bp) {
+        padding: calc(16.5rem * 1.5) 0 0 0;
+      }
+
       &__title {
         font-weight: $font-b;
         font-size: 3.2rem;
@@ -162,6 +174,12 @@
         text-transform: uppercase;
         padding-left: 9.8rem;
         margin-bottom: 1.9rem;
+
+        @include breakpoint($xs-bp) {
+          font-size: calc(1.6rem * 1.5);
+          line-height: calc(1.9rem * 1.5);
+          padding-left: calc(2.8rem * 1.5);
+        }
       }
 
       &__img {
@@ -195,6 +213,11 @@
           &::before {
             display: none;
           }
+        }
+
+        @include breakpoint($xs-bp) {
+          width: calc(21rem * 1.5);
+          height: calc(21rem * 1.5);
         }
       }
 
@@ -235,6 +258,10 @@
       margin-bottom: 13rem;
     }
 
+    @include breakpoint($xs-bp) {
+      margin-bottom: calc(6rem * 1.5);
+    }
+
     &__title {
       font-weight: $font-b;
       font-size: 3.2rem;
@@ -245,6 +272,12 @@
       @include breakpoint($xl-bp) {
         padding: 0;
         margin-bottom: 4.5rem;
+      }
+
+      @include breakpoint($xs-bp) {
+        font-size: calc(1.6rem * 1.5);
+        line-height: calc(1.9rem * 1.5);
+        margin-bottom: calc(1.5rem * 1.5);
       }
     }
 
@@ -268,11 +301,20 @@
         margin-bottom: 6rem;
       }
 
+      @include breakpoint($xs-bp) {
+        column-gap: calc(2rem * 1.5);
+        margin-bottom: calc(3.2rem * 1.5);
+      }
+
       &__item {
         margin-top: auto;
 
         @include breakpoint($xl-bp) {
           width: 19.5rem;
+        }
+
+        @include breakpoint($xs-bp) {
+          width: calc(12.5rem * 1.5);
         }
 
         &:first-child {
@@ -318,6 +360,11 @@
       margin-bottom: 13rem;
     }
 
+    @include breakpoint($xs-bp) {
+      gap: calc(5.8rem * 1.5);
+      margin-bottom: calc(9.6rem * 1.5);
+    }
+
     &-box {
       display: flex;
       flex-direction: column;
@@ -328,6 +375,15 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             column-gap: 5.5rem;
+          }
+        }
+      }
+
+      @include breakpoint($xs-bp) {
+        &:nth-child(2) & {
+          &__inner {
+            column-gap: calc(3.4rem * 1.5);
+            padding: calc(2rem * 1.5) calc(3rem * 1.5);
           }
         }
       }
@@ -348,6 +404,11 @@
           padding: 0 1.5rem;
           margin-bottom: 4rem;
         }
+
+        @include breakpoint($xs-bp) {
+          gap: calc(2rem * 1.5);
+          margin-bottom: calc(2.2rem * 1.5);
+        }
       }
 
       &__inner {
@@ -366,6 +427,11 @@
           justify-content: space-between;
           padding: 5.7rem 2.4rem;
         }
+
+        @include breakpoint($xs-bp) {
+          height: 54vw;
+          padding: 0;
+        }
       }
 
       &__title {
@@ -374,6 +440,11 @@
         font-size: 3.6rem;
         line-height: 4.3rem;
         letter-spacing: 0.03em;
+
+        @include breakpoint($xs-bp) {
+          font-size: calc(2.4rem * 1.5);
+          line-height: calc(2.9rem * 1.5);
+        }
       }
 
       &__btns {

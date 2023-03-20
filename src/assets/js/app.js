@@ -202,6 +202,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const canvas = document.querySelector(".main-top-canvas");
+  const FPS = document.getElementById("fps");
+
+  let be = Date.now();
+  let fps = 0;
+
+  function fpsCounter() {
+    let now = Date.now();
+    fps = Math.round(1000 / (now - be));
+    be = now;
+    FPS.textContent = fps
+  }
 
   if (canvas) {
     const scene = new THREE.Scene();
@@ -294,111 +305,63 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const loader = new THREE.GLTFLoader();
 
-    const dnaList = [];
-    let humanDNA_1 = null;
-    let humanDNA_2 = null;
-    let humanDNA_3 = null;
-
     if (window.matchMedia("(min-width: 1024px)").matches) {
-      // loader.load("./assets/models/humanDNA.gltf", (gltf) => {
-      //   gltf.scene.castShadow = true;
-      //   gltf.scene.position.z = -2.3;
-      //   humanDNA_1 = gltf.scene.clone();
-      //   humanDNA_1.scale.set(4, 4, 4);
-      //   humanDNA_1.position.y = 1;
-      //   pivot.add(humanDNA_1);
-      //   dnaList.push(humanDNA_1);
+      const dnaList = [];
 
-      //   humanDNA_2 = gltf.scene.clone();
-      //   humanDNA_2.scale.set(4, 4, 4);
-      //   humanDNA_2.position.y = -4;
-      //   pivot.add(humanDNA_2);
-      //   dnaList.push(humanDNA_2);
-
-      //   humanDNA_3 = gltf.scene.clone();
-      //   humanDNA_3.scale.set(4, 4, 4);
-      //   humanDNA_3.position.y = -9;
-      //   pivot.add(humanDNA_3);
-      //   dnaList.push(humanDNA_3);
-
-      // }, (e) => {
-      //   console.log(e);
-      // });
-    //   loader.load("./assets/models/DNA.glb", (gltf) => {
-    //     gltf.scene.castShadow = true;
-    //     gltf.scene.scale.set(1, 1, 1);
-    //     gltf.scene.rotateX(Math.PI/ 2);
-
-    //     gltf.scene.position.z = -20;
-    //     humanDNA_1 = gltf.scene.clone();
-    //     humanDNA_1.position.y = -6;
-    //     pivot.add(humanDNA_1);
-    //     dnaList.push(humanDNA_1);
-    //   }, (e) => {
-    //     console.log(e);
-    //   });
-
-    //   function animate() {
-    //     // pivot.rotateY(-0.003);
-
-    //     // dnaList.forEach(item => {
-    //     //   item.position.y += 0.003;
-    //     //   if (item.position.distanceTo(pivot.position) > 6 && item.position.y >= 6) {
-    //     //     item.position.y = -9;
-    //     //   }
-    //     // })
-
-    //     renderer.render(scene, camera);
-    //     requestAnimationFrame(animate);
-    //   }
-
-    //   requestAnimationFrame(animate);
-    // }
-
-    loader.load("./assets/models/dna.gltf", (gltf) => {
-      gltf.scene.castShadow = true;
-      gltf.scene.scale.set(1, 1, 1);
-      gltf.scene.rotateZ(Math.PI/ 2);
-      gltf.scene.position.z = -50;
-      gltf.scene.position.x = -5;
-
-      humanDNA_1 = gltf.scene.clone();
-      pivot.add(humanDNA_1);
-      dnaList.push(humanDNA_1);
-    }, (e) => {
-      console.log(e);
-    });
-
-    function animate() {
-      // pivot.rotateY(-0.003);
-
-      // dnaList.forEach(item => {
-      //   item.position.y += 0.003;
-      //   if (item.position.distanceTo(pivot.position) > 6 && item.position.y >= 6) {
-      //     item.position.y = -9;
-      //   }
-      // })
-
-      renderer.render(scene, camera);
-      requestAnimationFrame(animate);
-    }
-
-    requestAnimationFrame(animate);
-  }
-
-    if (window.matchMedia("(max-width: 1023px)").matches) {
-      loader.load("./assets/models/humanDNA.gltf", (gltf) => {
+      loader.load("./assets/models/DNA.glb", (gltf) => {
         gltf.scene.castShadow = true;
-        gltf.scene.position.z = -3;
-        humanDNA_1 = gltf.scene.clone();
-        humanDNA_1.scale.set(5, 5, 5);
+        gltf.scene.scale.set(0.5, 0.5, 0.5);
+
+        const humanDNA_1 = gltf.scene.clone();
         pivot.add(humanDNA_1);
         dnaList.push(humanDNA_1);
-      }, (e) => {
-        console.log(e);
+        humanDNA_1.position.y = 3;
+
+        const humanDNA_2 = gltf.scene.clone();
+        pivot.add(humanDNA_2);
+        dnaList.push(humanDNA_2);
+        humanDNA_2.position.y = -6.4;
+        humanDNA_2.rotateY(-1.56);
+
+        const humanDNA_3 = gltf.scene.clone();
+        pivot.add(humanDNA_3);
+        dnaList.push(humanDNA_3);
+        humanDNA_3.position.y = -15.8;
       });
 
       function animate() {
+        fpsCounter();
+        pivot.rotateY(-0.006);
+
+        dnaList.forEach((item, index) => {
+          item.position.y += 0.003;
+          if (item.position.distanceTo(pivot.position) >= 10 && item.position.y >= 10) {
+            item.position.y = -18.2;
+            item.rotateY(-1.56);
+          }
+        })
+
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    if (window.matchMedia("(max-width: 1023px)").matches) {
+      pivot.position.z = -110;
+
+      loader.load("./assets/models/DNA.glb", (gltf) => {
+        gltf.scene.castShadow = true;
+        gltf.scene.scale.set(0.5, 0.5, 0.5);
+
+        const humanDNA_1 = gltf.scene.clone();
+        humanDNA_1.scale.set(5, 5, 5);
+        pivot.add(humanDNA_1);
+      });
+
+      function animate() {
+        fpsCounter();
         pivot.rotateY(-0.003);
 
         renderer.render(scene, camera);
