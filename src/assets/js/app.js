@@ -420,6 +420,29 @@ document.addEventListener("DOMContentLoaded", () => {
       requestAnimationFrame(animate);
     }
   }
+
+  const aboutWrapper = document.querySelector(".about-wrapper");
+  const aboutContent = document.querySelector(".about");
+
+  if (aboutWrapper && aboutContent) {
+    const mainTL = gsap.timeline({
+      scrollTrigger: {
+        trigger: aboutWrapper,
+        scrub: 0,
+        pin: true,
+        end: "500%"
+      }
+    });
+
+    mainTL.to(aboutContent, {
+      x: -1 * (aboutContent.scrollWidth - aboutWrapper.offsetWidth) + "px",
+      duration: 1,
+    })
+    const delayTL = gsap.timeline({
+      duration: 0.2,
+    })
+    mainTL.add(delayTL);
+  }
 });
 
 window.onload = () => {

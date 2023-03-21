@@ -1,0 +1,231 @@
+.about {
+  display: flex;
+  height: 100%;
+
+  &-wrapper {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  &-main {
+    height: 100%;
+    min-width: 192rem;
+    display: flex;
+    flex-direction: column;
+
+    &-content {
+      flex: 1;
+      padding: 15.8rem 8.3rem 6.4rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__title {
+      font-weight: $font-eb;
+      font-size: 9.6rem;
+      line-height: 11.6rem;
+      background: linear-gradient(90deg, #31A49A 0%, #39BDB3 14.81%, #41D7CD 30.82%, #44E0D6 48.08%, #48D6DC 62.2%, #4FC4E5 80.1%, #5AA7F5 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    &__text {
+      max-width: 94.5rem;
+      font-weight: $font-b;
+      font-size: 3.6rem;
+      line-height: 4.6rem;
+      letter-spacing: 0.03em;
+      padding-top: 5.8rem;
+    }
+
+    &__link {
+      width: 10.5rem;
+      height: 1.6rem;
+      margin-top: auto;
+
+      &:hover {
+        svg {
+          fill: $accent;
+        }
+      }
+
+      svg {
+        object-fit: contain;
+        object-position: center center;
+        width: 100%;
+        height: 100%;
+        transition: .3s;
+      }
+    }
+
+    &__img {
+      flex: 1;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(49, 164, 154, 0.16);
+      }
+
+      img {
+        object-fit: cover;
+        object-position: center top;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  &-info {
+    display: flex;
+    flex: none;
+    padding: 9.7rem 8rem 0;
+
+    &-main {
+      padding-top: 13.7rem;
+      padding-bottom: 8.6rem;
+      padding-right: 2.1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+
+      &__subtitle {
+        width: 56.5rem;
+        font-weight: $font-eb;
+        font-size: 3.6rem;
+        line-height: 4.6rem;
+        letter-spacing: 0.03em;
+
+        span {
+          color: $accent;
+          font-size: inherit;
+          font-weight: inherit;
+          line-height: inherit;
+          letter-spacing: inherit;
+        }
+      }
+
+      &__text {
+        font-size: 2.4rem;
+        line-height: 3.1rem;
+        letter-spacing: 0.03em;
+        max-width: 49.2rem;
+      }
+    }
+
+    &__img {
+      height: 100%;
+      margin-right: 9rem;
+
+      img {
+        object-fit: contain;
+        object-position: center center;
+        height: 100%;
+      }
+    }
+
+    &-list {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6rem;
+
+      &__item {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      &__title {
+        font-weight: $font-eb;
+        font-size: 9.6rem;
+        line-height: 11.3rem;
+        background: linear-gradient(90deg, #31A49A 0%, #39BDB3 14.81%, #41D7CD 30.82%, #44E0D6 48.08%, #48D6DC 62.2%, #4FC4E5 80.1%, #5AA7F5 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      &__text {
+        font-size: 2.4rem;
+        line-height: 3.1rem;
+        letter-spacing: 0.03em;
+      }
+    }
+  }
+
+  &-team {
+    flex: none;
+    padding: 0 8rem;
+    display: flex;
+    gap: 14.1rem;
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      width: 96.9rem;
+      padding-top: 13.8rem;
+    }
+
+    &__text {
+      font-size: 2.4rem;
+      line-height: 3.1rem;
+      letter-spacing: 0.03em;
+    }
+
+    &-list {
+      display: flex;
+      gap: 8rem;
+      height: 100%;
+      padding-top: 9.7rem;
+
+      &__item {
+        padding-top: 4rem;
+        width: 41.8rem;
+        display: flex;
+        flex-direction: column;
+
+        &:not(:last-child) {
+          padding-right: 7.7rem;
+          border-right: 0.3rem solid $black;
+        }
+      }
+
+      &__img {
+        width: 100%;
+        height: 56.4rem;
+        margin-bottom: 3rem;
+
+        img {
+          object-fit: cover;
+          object-position: center center;
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      &__title {
+        font-size: 2.4rem;
+        line-height: 3.1rem;
+        letter-spacing: 0.03em;
+        margin-bottom: 2rem;
+      }
+
+      &__text {
+        font-weight: $font-r;
+        font-size: 1.8rem;
+        line-height: 2.2rem;
+      }
+    }
+  }
+}
