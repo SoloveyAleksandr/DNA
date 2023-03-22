@@ -28,7 +28,8 @@
     position: absolute;
     right: 4.4rem;
     // width: 37.8rem;
-    width: 45rem;
+    // width: 45rem;
+    width: 47vh;
     height: 100%;
     // background-color: #ff000025;
 
@@ -50,6 +51,7 @@
 
   &-head {
     display: flex;
+    padding-top: 9.7rem;
 
     @include breakpoint($xl-bp) {
       position: relative;
@@ -64,7 +66,7 @@
     &-info {
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
+      // justify-content: flex-end;
       align-items: flex-start;
       padding-bottom: 5.5rem;
 
@@ -147,7 +149,8 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      width: 72.8rem;
+      // width: 72.8rem;
+      width: 75vh;
       position: relative;
       overflow: hidden;
       pointer-events: none;
@@ -183,13 +186,16 @@
       }
 
       &__img {
-        width: 52rem;
-        height: 51.3rem;
+        // width: 52rem;
+        // height: 51.3rem;
+        width: 54vh;
+        height: 54vh;
         margin-bottom: -1rem;
         display: flex;
         align-items: center;
         justify-content: center;
         position: relative;
+        margin-bottom: 2vh;
 
         &::before {
           content: "";
@@ -247,7 +253,8 @@
     justify-content: flex-end;
     gap: 5.5rem;
     margin-right: 4rem;
-    width: 47.2rem;
+    // width: 47.2rem;
+    width: 49vh;
 
     @include breakpoint($xl-bp) {
       border: none;
@@ -336,7 +343,8 @@
 
   &-test {
     flex: none;
-    width: 100vw;
+    // width: 100vw;
+    min-width: 192rem;
     background: linear-gradient($white 47%,
         #31a49a 0%,
         #39bdb3 14.81%,
@@ -368,6 +376,24 @@
     &-box {
       display: flex;
       flex-direction: column;
+
+      &:nth-child(1) {
+        .main-top-test-box__img {
+          height: 48vh;
+          width: 50vh;
+
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+
+      &:nth-child(2) & {
+        &__inner {
+          padding: 0rem 5rem;
+        }
+      }
 
       @include breakpoint($xl-bp) {
         &:nth-child(2) & {
