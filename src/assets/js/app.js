@@ -424,7 +424,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const aboutWrapper = document.querySelector(".about-wrapper");
   const aboutContent = document.querySelector(".about");
 
-  if (aboutWrapper && aboutContent) {
+  if (aboutWrapper && aboutContent && window.matchMedia("(min-width: 1024px)").matches) {
     const mainTL = gsap.timeline({
       scrollTrigger: {
         trigger: aboutWrapper,
@@ -442,6 +442,74 @@ document.addEventListener("DOMContentLoaded", () => {
       duration: 0.2,
     })
     mainTL.add(delayTL);
+
+    const infoListTL = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".about-info",
+        start: "50% right",
+        end: "right left",
+        containerAnimation: mainTL,
+      }
+    })
+    const infoListTitles = gsap.utils.toArray(".about-info-list__title");
+    const infoListTexts = gsap.utils.toArray(".about-info-list__text");
+    infoListTitles.forEach((item, index) => {
+      infoListTL.from(item, {
+        opacity: 0,
+        x: "100%",
+        duration: 1,
+        delay: index * 0.5,
+      }, "sin")
+    });
+    infoListTexts.forEach((item, index) => {
+      infoListTL.from(item, {
+        opacity: 0,
+        y: "100%",
+        duration: 1,
+        delay: index * 0.3,
+      }, "sin_2")
+    });
+
+    const aboutDna = document.querySelector(".about-team-dna");
+    if (aboutDna) {
+      const fragment = document.createDocumentFragment();
+      const dnaInner = aboutDna.querySelector(".about-team-dna__inner");
+      const dnaItem = dnaInner.querySelector(".about-team-dna__box");
+
+      const startColor = {
+        r: 50,
+        g: 168,
+        b: 158,
+      };
+      const endColor = {
+        r: 89,
+        g: 168,
+        b: 244,
+      }
+
+      for (let i = 0; i < 20; i++) {
+        const item = dnaItem.cloneNode(true);
+        const spin_1 = item.querySelector(".about-team-dna__item_left");
+        const spin_2 = item.querySelector(".about-team-dna__item_right");
+
+        spin_1.style.animationDelay = (i + 1) * -1200 + 'ms';
+        spin_2.style.animationDelay = (i + 1) * -1200 + 'ms';
+        spin_1.style.backgroundColor = `rgb(${startColor.r + ((endColor.r - startColor.r) / 20 * i)}, 168, ${startColor.b + ((endColor.b - startColor.b) / 20 * i)})`;
+        spin_2.style.backgroundColor = `rgb(${startColor.r + ((endColor.r - startColor.r) / 20 * i)}, 168, ${startColor.b + ((endColor.b - startColor.b) / 20 * i)})`;
+
+        fragment.appendChild(item);
+      }
+
+      dnaInner.appendChild(fragment);
+    }
+  }
+
+  if (aboutContent && window.matchMedia("(max-width: 1023px)").matches) {
+    new Swiper(".about-team-list-wrapper", {
+      slidesPerView: "auto",
+      freeMode: true,
+      speed: 500,
+    })
   }
 });
 
