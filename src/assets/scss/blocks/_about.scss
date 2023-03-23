@@ -365,11 +365,13 @@
     }
 
     &-dna {
-      width: 80rem;
+      // width: 80rem;
       flex: 1;
       // background-color: rgba(255, 128, 128, 0.314);
-      position: relative;
-      overflow: hidden;
+      // position: relative;
+      // overflow: hidden;
+      margin-left: 12.4rem;
+      width: 38.4rem;
 
       @include breakpoint($xl-bp) {
         display: none;

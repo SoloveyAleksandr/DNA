@@ -50,6 +50,29 @@
     }
   }
 
+  &-dna {
+    position: absolute;
+    right: 4.4rem;
+    width: 47vh;
+    height: 100%;
+    z-index: -1;
+
+    @include breakpoint($xl-bp) {
+      top: 5.3rem;
+      right: 0;
+      height: 100rem;
+    }
+
+    @include breakpoint($sm-bp) {
+      width: 30rem;
+    }
+
+    @include breakpoint($xs-bp) {
+      width: 30vw;
+      height: calc(40.6rem * 1.5);
+    }
+  }
+
   &-head {
     display: flex;
     padding-top: 9.7rem;

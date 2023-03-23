@@ -263,233 +263,35 @@ document.addEventListener("DOMContentLoaded", () => {
   //   FPS.textContent = fps
   // }
 
-  if (canvas) {
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, canvas.offsetWidth / canvas.offsetHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({
-      canvas: canvas,
-      context: canvas.getContext("webgl"),
-      antialias: true,
-      alpha: true
-    });
+  const startWindowSize = window.innerWidth;
 
-    const simplex = new SimplexNoise();
+  const breakpoints = [480, 744, 1023, 1920];
+  let maxBreakpoint = Infinity;
+  let minBreakpoint = 0;
 
-    const startWindowSize = window.innerWidth;
-
-    const breakpoints = [480, 744, 1023, 1920];
-    let maxBreakpoint = Infinity;
-    let minBreakpoint = 0;
-
-    for (let i = 0; i < breakpoints.length; i++) {
-      if (startWindowSize < breakpoints[i]) {
-        maxBreakpoint = breakpoints[i];
-        break;
-      }
-    }
-
-    for (let i = breakpoints.length - 1; i > -1; i--) {
-      if (startWindowSize > breakpoints[i]) {
-        minBreakpoint = breakpoints[i];
-        break;
-      }
-    }
-
-    if (breakpoints.includes(startWindowSize)) {
-      maxBreakpoint = startWindowSize;
-    }
-
-    // console.log(minBreakpoint, maxBreakpoint)
-
-    const canvasWidth = canvas.offsetWidth;
-    const canvasHeight = canvas.offsetHeight;
-    const canvasWidthPrec = canvasWidth / (window.innerWidth / 100) / 100;
-    const canvasHeightPrec = canvasHeight / (window.innerWidth / 100) / 100;
-
-    renderer.setSize(canvasWidth, canvasHeight);
-
-    window.addEventListener("resize", () => {
-      const width = window.innerWidth;
-      renderer.setSize(window.innerWidth * canvasWidthPrec, window.innerWidth * canvasHeightPrec);
-      if (width >= maxBreakpoint || width <= minBreakpoint) {
-        location.reload();
-      }
-    })
-
-    renderer.setPixelRatio(window.devicePixelRatio || 1);
-
-    camera.position.z = 10;
-
-    //==>точечный свет
-    // let lightTop = new THREE.DirectionalLight("#5F9A94", 1);
-    // lightTop.position.set(0, 500, 200);
-    // lightTop.castShadow = true;
-    // scene.add(lightTop);
-
-    let light_1 = new THREE.DirectionalLight("#88E5CB", 0.8);
-    light_1.position.set(100, 100, 100);
-    light_1.castShadow = true;
-    scene.add(light_1);
-
-    let light_2 = new THREE.DirectionalLight("#436759", 0.5);
-    light_2.position.set(-100, -100, 100);
-    light_2.castShadow = true;
-    scene.add(light_2);
-    //<==
-
-    //основной свет
-    let ambientLight = new THREE.AmbientLight("#00C8B7", 0.5);
-    scene.add(ambientLight);
-
-    const pivot = new THREE.Group();
-    scene.add(pivot);
-
-    if (window.matchMedia("(max-width: 744px)").matches) {
-      pivot.position.x = 0.25;
-    } else {
-      pivot.position.x = 0.25;
-      pivot.rotation.z = -0.2;
-    }
-    // pivot.scale.set(2, 2, 2);
-
-    const loader = new THREE.GLTFLoader();
-
-    if (window.matchMedia("(min-width: 1024px)").matches) {
-      const dnaList = [];
-
-      loader.load("./assets/models/DNA.glb", (gltf) => {
-        gltf.scene.castShadow = true;
-        gltf.scene.scale.set(0.5, 0.5, 0.5);
-
-        const humanDNA_1 = gltf.scene.clone();
-        pivot.add(humanDNA_1);
-        dnaList.push(humanDNA_1);
-        humanDNA_1.position.y = 3;
-
-        const humanDNA_2 = gltf.scene.clone();
-        pivot.add(humanDNA_2);
-        dnaList.push(humanDNA_2);
-        humanDNA_2.position.y = -6.4;
-        humanDNA_2.rotateY(-1.56);
-
-        const humanDNA_3 = gltf.scene.clone();
-        pivot.add(humanDNA_3);
-        dnaList.push(humanDNA_3);
-        humanDNA_3.position.y = -15.8;
-      });
-
-      function animate() {
-        // fpsCounter();
-        pivot.rotateY(-0.006);
-
-        dnaList.forEach((item, index) => {
-          item.position.y += 0.003;
-          if (item.position.distanceTo(pivot.position) >= 10 && item.position.y >= 10) {
-            item.position.y = -18.2;
-            item.rotateY(-1.56);
-          }
-        })
-
-        renderer.render(scene, camera);
-        requestAnimationFrame(animate);
-      }
-
-      requestAnimationFrame(animate);
-
-      // loader.load("./assets/models/humanDNA.gltf", (gltf) => {
-      //   gltf.scene.castShadow = true;
-      //   gltf.scene.scale.set(4, 4, 4);
-      //   gltf.scene.position.z = -2.36;
-
-      //   const humanDNA_1 = gltf.scene.clone();
-      //   pivot.add(humanDNA_1);
-      //   dnaList.push(humanDNA_1);
-      //   humanDNA_1.position.y = 2.8;
-
-      //   const humanDNA_2 = gltf.scene.clone();
-      //   humanDNA_2.position.y = -2;
-      //   pivot.add(humanDNA_2);
-      //   dnaList.push(humanDNA_2);
-      // });
-
-      // function animate() {
-      //   // fpsCounter();
-      //   pivot.rotateY(-0.006);
-
-      //   // dnaList.forEach((item, index) => {
-      //   //   item.position.y += 0.003;
-      //   //   if (item.position.distanceTo(pivot.position) >= 10 && item.position.y >= 10) {
-      //   //     item.position.y = -18.2;
-      //   //     item.rotateY(-1.56);
-      //   //   }
-      //   // })
-
-      //   renderer.render(scene, camera);
-      //   requestAnimationFrame(animate);
-      // }
-
-      // requestAnimationFrame(animate);
-
-      // pivot.position.z = -50;
-      // loader.load("./assets/models/dna.gltf", (gltf) => {
-      //   gltf.scene.castShadow = true;
-      //   gltf.scene.scale.set(1, 1, 1);
-      //   gltf.scene.position.x = -8;
-      //   gltf.scene.rotateZ(Math.PI / 2)
-
-      //   const humanDNA_1 = gltf.scene.clone();
-      //   pivot.add(humanDNA_1);
-      //   dnaList.push(humanDNA_1);
-      //   humanDNA_1.position.y = 6;
-
-      //   const humanDNA_2 = gltf.scene.clone();
-      //   humanDNA_2.position.y = -40;
-      //   pivot.add(humanDNA_2);
-      //   dnaList.push(humanDNA_2);
-      // });
-
-      // function animate() {
-      //   // fpsCounter();
-      //   pivot.rotateY(-0.006);
-
-      //   // dnaList.forEach((item, index) => {
-      //   //   item.position.y += 0.003;
-      //   //   if (item.position.distanceTo(pivot.position) >= 10 && item.position.y >= 10) {
-      //   //     item.position.y = -18.2;
-      //   //     item.rotateY(-1.56);
-      //   //   }
-      //   // })
-
-      //   renderer.render(scene, camera);
-      //   requestAnimationFrame(animate);
-      // }
-
-      // requestAnimationFrame(animate);
-    }
-
-    if (window.matchMedia("(max-width: 1023px)").matches) {
-      pivot.position.z = -110;
-
-      loader.load("./assets/models/DNA.glb", (gltf) => {
-        gltf.scene.castShadow = true;
-        gltf.scene.scale.set(0.5, 0.5, 0.5);
-
-        const humanDNA_1 = gltf.scene.clone();
-        humanDNA_1.scale.set(5, 5, 5);
-        pivot.add(humanDNA_1);
-      });
-
-      function animate() {
-        // fpsCounter();
-        pivot.rotateY(-0.003);
-
-        renderer.render(scene, camera);
-        requestAnimationFrame(animate);
-      }
-
-      requestAnimationFrame(animate);
+  for (let i = 0; i < breakpoints.length; i++) {
+    if (startWindowSize < breakpoints[i]) {
+      maxBreakpoint = breakpoints[i];
+      break;
     }
   }
+
+  for (let i = breakpoints.length - 1; i > -1; i--) {
+    if (startWindowSize > breakpoints[i]) {
+      minBreakpoint = breakpoints[i];
+      break;
+    }
+  }
+
+  if (breakpoints.includes(startWindowSize)) {
+    maxBreakpoint = startWindowSize;
+  }
+
+  window.addEventListener("resize", () => {
+    if (width >= maxBreakpoint || width <= minBreakpoint) {
+      location.reload();
+    }
+  })
 
   const aboutWrapper = document.querySelector(".about-wrapper");
   const aboutContent = document.querySelector(".about");
@@ -539,39 +341,6 @@ document.addEventListener("DOMContentLoaded", () => {
         delay: index * 0.3,
       }, "sin_2")
     });
-
-    const aboutDna = document.querySelector(".about-team-dna");
-    if (aboutDna) {
-      const fragment = document.createDocumentFragment();
-      const dnaInner = aboutDna.querySelector(".about-team-dna__inner");
-      const dnaItem = dnaInner.querySelector(".about-team-dna__box");
-
-      const startColor = {
-        r: 50,
-        g: 168,
-        b: 158,
-      };
-      const endColor = {
-        r: 89,
-        g: 168,
-        b: 244,
-      }
-
-      for (let i = 0; i < 20; i++) {
-        const item = dnaItem.cloneNode(true);
-        const spin_1 = item.querySelector(".about-team-dna__item_left");
-        const spin_2 = item.querySelector(".about-team-dna__item_right");
-
-        spin_1.style.animationDelay = (i + 1) * -1200 + 'ms';
-        spin_2.style.animationDelay = (i + 1) * -1200 + 'ms';
-        spin_1.style.backgroundColor = `rgb(${startColor.r + ((endColor.r - startColor.r) / 20 * i)}, 168, ${startColor.b + ((endColor.b - startColor.b) / 20 * i)})`;
-        spin_2.style.backgroundColor = `rgb(${startColor.r + ((endColor.r - startColor.r) / 20 * i)}, 168, ${startColor.b + ((endColor.b - startColor.b) / 20 * i)})`;
-
-        fragment.appendChild(item);
-      }
-
-      dnaInner.appendChild(fragment);
-    }
   }
 
   if (aboutContent && window.matchMedia("(max-width: 1023px)").matches) {
@@ -580,6 +349,39 @@ document.addEventListener("DOMContentLoaded", () => {
       freeMode: true,
       speed: 500,
     })
+  }
+
+  const aboutDna = document.querySelector(".about-team-dna");
+  if (aboutDna) {
+    const fragment = document.createDocumentFragment();
+    const dnaItem = aboutDna.querySelector(".about-team-dna__box");
+
+    const startColor = {
+      r: 50,
+      g: 168,
+      b: 158,
+    };
+    const endColor = {
+      r: 89,
+      g: 168,
+      b: 244,
+    }
+
+    // for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < Math.round(aboutDna.offsetHeight / 50); i++) {
+      const item = dnaItem.cloneNode(true);
+      const spin_1 = item.querySelector(".about-team-dna__item_left");
+      const spin_2 = item.querySelector(".about-team-dna__item_right");
+
+      spin_1.style.animationDelay = (i + 1) * -1200 + 'ms';
+      spin_2.style.animationDelay = (i + 1) * -1200 + 'ms';
+      spin_1.style.backgroundColor = `rgb(${startColor.r + ((endColor.r - startColor.r) / 20 * i)}, 168, ${startColor.b + ((endColor.b - startColor.b) / 20 * i)})`;
+      spin_2.style.backgroundColor = `rgb(${startColor.r + ((endColor.r - startColor.r) / 20 * i)}, 168, ${startColor.b + ((endColor.b - startColor.b) / 20 * i)})`;
+
+      fragment.appendChild(item);
+    }
+
+    aboutDna.appendChild(fragment);
   }
 });
 
