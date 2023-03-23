@@ -395,6 +395,76 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       requestAnimationFrame(animate);
+
+      // loader.load("./assets/models/humanDNA.gltf", (gltf) => {
+      //   gltf.scene.castShadow = true;
+      //   gltf.scene.scale.set(4, 4, 4);
+      //   gltf.scene.position.z = -2.36;
+
+      //   const humanDNA_1 = gltf.scene.clone();
+      //   pivot.add(humanDNA_1);
+      //   dnaList.push(humanDNA_1);
+      //   humanDNA_1.position.y = 2.8;
+
+      //   const humanDNA_2 = gltf.scene.clone();
+      //   humanDNA_2.position.y = -2;
+      //   pivot.add(humanDNA_2);
+      //   dnaList.push(humanDNA_2);
+      // });
+
+      // function animate() {
+      //   // fpsCounter();
+      //   pivot.rotateY(-0.006);
+
+      //   // dnaList.forEach((item, index) => {
+      //   //   item.position.y += 0.003;
+      //   //   if (item.position.distanceTo(pivot.position) >= 10 && item.position.y >= 10) {
+      //   //     item.position.y = -18.2;
+      //   //     item.rotateY(-1.56);
+      //   //   }
+      //   // })
+
+      //   renderer.render(scene, camera);
+      //   requestAnimationFrame(animate);
+      // }
+
+      // requestAnimationFrame(animate);
+
+      // pivot.position.z = -50;
+      // loader.load("./assets/models/dna.gltf", (gltf) => {
+      //   gltf.scene.castShadow = true;
+      //   gltf.scene.scale.set(1, 1, 1);
+      //   gltf.scene.position.x = -8;
+      //   gltf.scene.rotateZ(Math.PI / 2)
+
+      //   const humanDNA_1 = gltf.scene.clone();
+      //   pivot.add(humanDNA_1);
+      //   dnaList.push(humanDNA_1);
+      //   humanDNA_1.position.y = 6;
+
+      //   const humanDNA_2 = gltf.scene.clone();
+      //   humanDNA_2.position.y = -40;
+      //   pivot.add(humanDNA_2);
+      //   dnaList.push(humanDNA_2);
+      // });
+
+      // function animate() {
+      //   // fpsCounter();
+      //   pivot.rotateY(-0.006);
+
+      //   // dnaList.forEach((item, index) => {
+      //   //   item.position.y += 0.003;
+      //   //   if (item.position.distanceTo(pivot.position) >= 10 && item.position.y >= 10) {
+      //   //     item.position.y = -18.2;
+      //   //     item.rotateY(-1.56);
+      //   //   }
+      //   // })
+
+      //   renderer.render(scene, camera);
+      //   requestAnimationFrame(animate);
+      // }
+
+      // requestAnimationFrame(animate);
     }
 
     if (window.matchMedia("(max-width: 1023px)").matches) {

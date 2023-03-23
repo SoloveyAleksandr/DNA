@@ -160,91 +160,113 @@
       .main-about__description {
         max-width: 62rem;
       }
+
+      .main-about-slide__number {
+        width: 6rem;
+      }
     }
 
     &_3 {
-      width: 95vw;
+      width: calc(100vw - 6rem);
 
       .main-about__description {
-        max-width: 59rem;
+        max-width: 62rem;
+      }
+
+      .main-about__subtitle {
+        max-width: 61.1rem;
+      }
+
+      .main-about-slide__number {
+        width: 6rem;
       }
     }
 
     &_4 {
-      width: 90vw;
+      width: calc(100vw - (6rem * 2));
+      gap: 4rem;
 
       .main-about-slide__number {
-        width: 6vw;
+        width: 6rem;
       }
 
       .main-about__description {
-        max-width: 50.5rem;
+        max-width: 62rem;
+      }
+
+      .main-about__subtitle {
+        max-width: 61.1rem;
       }
     }
 
     &_5 {
-      width: 84vw;
+      width: calc(100vw - (6rem * 3));
+      gap: 4rem;
 
       .main-about-slide__number {
-        width: 6vw;
-      }
-
-      .main-about__subtitle {
-        max-width: 41rem;
+        width: 6rem;
       }
 
       .main-about__description {
-        max-width: 46rem;
+        max-width: 62rem;
+      }
+
+      .main-about__subtitle {
+        max-width: 61.1rem;
       }
     }
 
     &_6 {
-      width: 78vw;
+      width: calc(100vw - (6rem * 4));
 
       .main-about-slide__number {
-        width: 6vw;
-      }
-
-      .main-about__subtitle {
-        max-width: 48.9rem;
+        width: 6rem;
       }
 
       .main-about__description {
-        max-width: 46rem;
+        max-width: 56rem;
+      }
+
+      .main-about__subtitle {
+        max-width: 56rem;
       }
     }
 
     &_7 {
-      width: 72vw;
+      width: calc(100vw - (6rem * 5));
+      gap: 4rem;
 
       .main-about-slide__number {
-        width: 6vw;
-      }
-
-      .main-about__subtitle {
-        max-width: 36.6rem;
+        width: 6rem;
       }
 
       .main-about__description {
-        max-width: 36.6rem;
+        max-width: 52rem;
+      }
+
+      .main-about__subtitle {
+        max-width: 52rem;
       }
     }
 
     &_8 {
-      width: 66vw;
+      width: calc(100vw - (6rem * 6));
 
       .main-about-slide__number {
-        width: 8vw;
-      }
+        width: 11rem;
 
-      .main-about__subtitle {
-        max-width: 33.4rem;
+        span {
+          left: 0.5rem;
+          transform: none;
+        }
       }
 
       .main-about__description {
-        max-width: 31.3rem;
-        padding-right: 2.5rem;
-        // max-width: 33.8rem;
+        max-width: 52rem;
+      }
+
+      .main-about__subtitle {
+        max-width: 52rem;
       }
     }
   }
@@ -266,31 +288,38 @@
     &__number {
       font-family: 'Raleway', sans-serif;
       font-weight: 900;
-      font-size: 9.6rem;
-      line-height: 11.3rem;
-      width: 5vw;
+      // font-size: 9.6rem;
+      // line-height: 11.3rem;
+      font-size: 6.4rem;
+      line-height: 6.4rem;
+      // width: 5vw;
       // width: fit-content;
       height: 100%;
-      padding-top: 83vh;
-      padding-left: 2rem;
+      // padding-top: 83vh;
+      // padding-left: 0.5rem;
       display: flex;
       justify-content: flex-start;
       // border-right: 0.3rem solid $accent;
       border-left: 0.3rem solid $accent;
       transition: all .3s;
+      position: relative;
 
       &._active {
         font-weight: 700;
-        font-size: 6.4rem;
-        line-height: 7.5rem;
-        border-right: 0.3rem solid #464646;
-        border-left: 0.3rem solid transparent;
+        // font-size: 6.4rem;
+        // line-height: 7.5rem;
+        font-size: 4.2rem;
+        line-height: 4.2rem;
+        // border-right: 0.3rem solid #464646;
+        border-left: 0.3rem solid #464646;
 
         span {
           background: #464646;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
+          left: 50%;
+          transform: translateX(-50%);
         }
       }
 
@@ -312,6 +341,11 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        position: absolute;
+        top: 83vh;
+        left: 0.5rem;
+        // left: 50%;
+        // transform: translateX(-50%);
       }
     }
   }
