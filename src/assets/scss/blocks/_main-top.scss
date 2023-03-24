@@ -53,7 +53,9 @@
   &-dna {
     position: absolute;
     right: 4.4rem;
-    width: 47vh;
+    width: 50%;
+    max-width: 50rem;
+    // width: 47vh;
     height: 100%;
     z-index: -1;
 
