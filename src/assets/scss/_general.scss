@@ -82,3 +82,131 @@ body::-webkit-scrollbar-thumb {
     gap: 0.2rem;
   }
 }
+
+.dna-anim {
+  width: 38.4rem;
+
+  &__box {
+    width: 100%;
+    height: 5rem;
+    position: relative;
+
+    @include breakpoint($xs-bp) {
+      height: calc(2rem * 1.5);
+    }
+  }
+
+  &__item {
+    position: absolute;
+    top: 0;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 100%;
+
+    @include breakpoint($xs-bp) {
+      width: calc(2rem * 1.5);
+      height: calc(2rem * 1.5);
+    }
+
+    &::before {
+      content: "";
+      width: inherit;
+      height: inherit;
+      border-radius: inherit;
+      background-color: inherit;
+      position: absolute;
+      top: 100%;
+      left: 10%;
+      opacity: 0.15;
+      transform: scale(0.8);
+    }
+
+    &::after {
+      content: "";
+      width: inherit;
+      height: inherit;
+      border-radius: inherit;
+      background-color: inherit;
+      position: absolute;
+      top: 60%;
+      left: -80%;
+      transform: scale(0.9);
+    }
+
+    &_left {
+      left: 0;
+      background: rgb(50, 168, 158);
+      animation: 16s leftNode ease-in-out infinite;
+    }
+
+    &_right {
+      right: 0;
+      background: rgb(50, 168, 158);
+      animation: 16s rightNode ease-in-out infinite;
+    }
+
+    @keyframes leftNode {
+      0% {
+        transform: scale(0.5);
+        left: 0;
+        z-index: 10;
+        opacity: 0.75;
+      }
+
+      25% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(0.5) translateX(-100%);
+        // left: calc(100% - 5rem);
+        left: 100%;
+        z-index: 0;
+        opacity: 0.75;
+      }
+
+      75% {
+        transform: scale(0.25);
+        opacity: 0.5;
+      }
+
+      100% {
+        transform: scale(0.5);
+        left: 0;
+        opacity: 0.75;
+      }
+    }
+
+    @keyframes rightNode {
+      0% {
+        transform: scale(0.5);
+        right: 0;
+        opacity: 0.75;
+      }
+
+      25% {
+        transform: scale(0.25);
+        opacity: 0.5;
+      }
+
+      50% {
+        transform: scale(0.5) translateX(100%);
+        // right: calc(100% - 5rem);
+        right: 100%;
+        opacity: 0.75;
+      }
+
+      75% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(0.5);
+        right: 0;
+        opacity: 0.75;
+      }
+    }
+  }
+}

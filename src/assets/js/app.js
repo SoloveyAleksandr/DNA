@@ -250,19 +250,6 @@ document.addEventListener("DOMContentLoaded", () => {
     container.appendChild(fragment);
   }
 
-  const canvas = document.querySelector(".main-top-canvas");
-  const FPS = document.getElementById("fps");
-
-  // let be = Date.now();
-  // let fps = 0;
-
-  // function fpsCounter() {
-  //   let now = Date.now();
-  //   fps = Math.round(1000 / (now - be));
-  //   be = now;
-  //   FPS.textContent = fps
-  // }
-
   const startWindowSize = window.innerWidth;
 
   const breakpoints = [480, 744, 1023, 1920];
@@ -287,8 +274,8 @@ document.addEventListener("DOMContentLoaded", () => {
     maxBreakpoint = startWindowSize;
   }
 
-  window.addEventListener("resize", () => {
-    if (width >= maxBreakpoint || width <= minBreakpoint) {
+  window.addEventListener("resize", (e) => {
+    if (e.target.innerWidth >= maxBreakpoint || e.target.innerWidth <= minBreakpoint || e.target.innerWidth >= startWindowSize * 1.1 || e.target.innerWidth <= startWindowSize * 0.9) {
       location.reload();
     }
   })
@@ -351,10 +338,10 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 
-  const aboutDna = document.querySelector(".about-team-dna");
-  if (aboutDna) {
+  const dnaAnim = document.querySelector(".dna-anim");
+  if (dnaAnim) {
     const fragment = document.createDocumentFragment();
-    const dnaItem = aboutDna.querySelector(".about-team-dna__box");
+    const dnaItem = dnaAnim.querySelector(".dna-anim__box");
 
     const startColor = {
       r: 50,
@@ -367,11 +354,11 @@ document.addEventListener("DOMContentLoaded", () => {
       b: 244,
     }
 
-    // for (let i = 0; i < 20; i++) {
-    for (let i = 0; i < Math.round(aboutDna.offsetHeight / 50); i++) {
+    const dnaCoun = Math.round(dnaAnim.offsetHeight / (window.matchMedia("(min-width: 481px)").matches ? 50 : 25));
+    for (let i = 0; i < dnaCoun; i++) {
       const item = dnaItem.cloneNode(true);
-      const spin_1 = item.querySelector(".about-team-dna__item_left");
-      const spin_2 = item.querySelector(".about-team-dna__item_right");
+      const spin_1 = item.querySelector(".dna-anim__item_left");
+      const spin_2 = item.querySelector(".dna-anim__item_right");
 
       spin_1.style.animationDelay = (i + 1) * -1200 + 'ms';
       spin_2.style.animationDelay = (i + 1) * -1200 + 'ms';
@@ -381,7 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
       fragment.appendChild(item);
     }
 
-    aboutDna.appendChild(fragment);
+    dnaAnim.appendChild(fragment);
   }
 });
 

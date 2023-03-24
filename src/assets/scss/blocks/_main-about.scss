@@ -57,14 +57,14 @@
     max-width: 58.3rem;
 
     @include breakpoint($xl-bp) {
-      margin-bottom: 4rem;
+      // margin-bottom: 4rem;
       max-width: 100%;
     }
 
     @include breakpoint($xs-bp) {
       font-size: calc(1.8rem * 1.5);
       line-height: calc(2.3rem * 1.5);
-      margin-bottom: calc(2rem * 1.5);
+      // margin-bottom: calc(2rem * 1.5);
     }
   }
 
@@ -288,18 +288,11 @@
     &__number {
       font-family: 'Raleway', sans-serif;
       font-weight: 900;
-      // font-size: 9.6rem;
-      // line-height: 11.3rem;
       font-size: 6.4rem;
       line-height: 6.4rem;
-      // width: 5vw;
-      // width: fit-content;
       height: 100%;
-      // padding-top: 83vh;
-      // padding-left: 0.5rem;
       display: flex;
       justify-content: flex-start;
-      // border-right: 0.3rem solid $accent;
       border-left: 0.3rem solid $accent;
       transition: all .3s;
       position: relative;
@@ -346,6 +339,10 @@
         left: 0.5rem;
         // left: 50%;
         // transform: translateX(-50%);
+
+        @include breakpoint($xl-bp) {
+          position: static;
+        }
       }
     }
   }
@@ -393,10 +390,13 @@
       &__container {
         padding: 0 1.5rem;
         display: grid;
+        grid-template-columns: min-content;
         column-gap: 4rem;
+        row-gap: 3rem;
 
         @include breakpoint($xs-bp) {
           column-gap: calc(2rem * 1.5);
+          row-gap: calc(2rem * 1.5);
         }
 
         &> {
