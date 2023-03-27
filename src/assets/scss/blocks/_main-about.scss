@@ -32,9 +32,26 @@
       font-weight: inherit;
       font-size: inherit;
       line-height: inherit;
-      background: linear-gradient(90deg, #31A49A 0%, #39BDB3 14.81%, #41D7CD 30.82%, #44E0D6 48.08%, #48D6DC 62.2%, #4FC4E5 80.1%, #5AA7F5 100%);
-      background-clip: text;
+      background: linear-gradient(
+        90deg,
+        #31a49a 0%,
+        #39bdb3 14.81%,
+        #41d7cd 30.82%,
+        #44e0d6 48.08%,
+        #48d6dc 62.2%,
+        #4fc4e5 80.1%,
+        #5aa7f5 100%
+      );
+      // background-clip: text;
+      // -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      -moz-background-clip: text;
+      -moz-text-fill-color: transparent;
+      -ms-background-clip: text;
+      -ms-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
     }
 
     @include breakpoint($xl-bp) {
@@ -91,7 +108,7 @@
     z-index: 100;
     width: 100vw;
     height: 1rem;
-    background-color: #DCDCDC;
+    background-color: #dcdcdc;
     bottom: 0;
     left: 0;
 
@@ -104,7 +121,7 @@
       // width: 17.65%;
       width: 0%;
       background-color: $accent;
-      transition: .3s;
+      transition: 0.3s;
     }
   }
 
@@ -286,7 +303,7 @@
     display: flex;
 
     &__number {
-      font-family: 'Raleway', sans-serif;
+      font-family: "Raleway", sans-serif;
       font-weight: 900;
       font-size: 6.4rem;
       line-height: 6.4rem;
@@ -294,7 +311,7 @@
       display: flex;
       justify-content: flex-start;
       border-left: 0.3rem solid $accent;
-      transition: all .3s;
+      transition: all 0.3s;
       position: relative;
 
       &._active {
@@ -308,9 +325,17 @@
 
         span {
           background: #464646;
+          // -webkit-background-clip: text;
+          // -webkit-text-fill-color: transparent;
+          // background-clip: text;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
+          -moz-background-clip: text;
+          -moz-text-fill-color: transparent;
+          -ms-background-clip: text;
+          -ms-text-fill-color: transparent;
           background-clip: text;
+          text-fill-color: transparent;
           left: 50%;
           transform: translateX(-50%);
         }
@@ -330,10 +355,27 @@
         font-weight: inherit;
         font-size: inherit;
         line-height: inherit;
-        background: linear-gradient(180deg, #31A49A 0%, #39BDB3 14.81%, #41D7CD 30.82%, #44E0D6 48.08%, #48D6DC 62.2%, #4FC4E5 80.1%, #5AA7F5 100%);
+        background: linear-gradient(
+          180deg,
+          #31a49a 0%,
+          #39bdb3 14.81%,
+          #41d7cd 30.82%,
+          #44e0d6 48.08%,
+          #48d6dc 62.2%,
+          #4fc4e5 80.1%,
+          #5aa7f5 100%
+        );
+        // -webkit-background-clip: text;
+        // -webkit-text-fill-color: transparent;
+        // background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        -moz-background-clip: text;
+        -moz-text-fill-color: transparent;
+        -ms-background-clip: text;
+        -ms-text-fill-color: transparent;
         background-clip: text;
+        text-fill-color: transparent;
         position: absolute;
         top: 83vh;
         left: 0.5rem;
@@ -399,7 +441,7 @@
           row-gap: calc(2rem * 1.5);
         }
 
-        &> {
+        & > {
           .main-about-slide__number {
             grid-area: 1/1/2/2;
           }
