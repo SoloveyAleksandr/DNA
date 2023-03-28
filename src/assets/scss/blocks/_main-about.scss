@@ -324,18 +324,19 @@
         border-left: 0.3rem solid #464646;
 
         span {
-          background: #464646;
+          background: transparent;
           // -webkit-background-clip: text;
           // -webkit-text-fill-color: transparent;
           // background-clip: text;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          -moz-background-clip: text;
-          -moz-text-fill-color: transparent;
-          -ms-background-clip: text;
-          -ms-text-fill-color: transparent;
-          background-clip: text;
-          text-fill-color: transparent;
+          -webkit-background-clip: unset;
+          -webkit-text-fill-color: unset;
+          -moz-background-clip: unset;
+          -moz-text-fill-color: unset;
+          -ms-background-clip: unset;
+          -ms-text-fill-color: unset;
+          background-clip: unset;
+          text-fill-color: unset;
+          color: #464646;
           left: 50%;
           transform: translateX(-50%);
         }
