@@ -44,7 +44,58 @@ document.addEventListener("DOMContentLoaded", () => {
         duration: 1,
         ease: "none",
         x: -1 * (mainTop.scrollWidth - mainTopWrapper.clientWidth) + "px",
-      })
+      });
+
+    const mobileTL = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".main-top-mobile",
+        start: "left right",
+        end: "right right",
+        containerAnimation: mainTL,
+        // markers: true,
+      }
+    })
+      .from(".main-top-mobile-list__item_1", {
+        opacity: 0,
+        y: "-50%",
+        duration: 1.5,
+        delay: 1,
+      }, "sin")
+      .from(".main-top-mobile-list__item_2", {
+        opacity: 0,
+        y: "50%",
+        duration: 1.5,
+        delay: 1.5,
+      }, "sin")
+
+    const testMobileTL = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".main-top-test-box_2",
+        start: "20% right",
+        end: "right right",
+        containerAnimation: mainTL,
+        scrub: true,
+        // markers: true,
+      }
+    })
+      .from(".main-top-test-box__img_1", {
+        opacity: 0,
+        y: "-50%",
+        duration: 1,
+      }, "sin")
+      .from(".main-top-test-box__img_2", {
+        opacity: 0,
+        y: "50%",
+        duration: 1,
+        delay: 0.5,
+      }, "sin")
+      .from(".main-top-test-box__img_3", {
+        opacity: 0,
+        y: "-50%",
+        duration: 1,
+        delay: 1,
+      }, "sin")
+
     const delayTL = gsap.timeline({
       duration: 0.2,
     })
