@@ -32,6 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const mainTopWrapper = document.querySelector(".main-top-wrapper");
     const mainTop = mainTopWrapper.querySelector(".main-top");
 
+    console.log(mainTopWrapper.clientWidth);
+    console.log(mainTop.scrollWidth);
+
     const mainTL = gsap.timeline({
       scrollTrigger: {
         trigger: mainTopWrapper,
@@ -68,6 +71,37 @@ document.addEventListener("DOMContentLoaded", () => {
         delay: 1.5,
       }, "sin")
 
+    const boxTL = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".main-top-test-box_1",
+        start: "left 80%",
+        end: "right 80%",
+        scrub: true,
+        containerAnimation: mainTL,
+        // markers: true,
+      }
+    })
+      .from(".main-top-test-box__img_7", {
+        opacity: 0,
+        y: "50%",
+        duration: 1,
+      })
+      .from(".main-top-test-box__img_6", {
+        opacity: 0,
+        y: "-50%",
+        duration: 1,
+      })
+      .from(".main-top-test-box__img_5", {
+        opacity: 0,
+        y: "-50%",
+        duration: 1,
+      })
+      .from(".main-top-test-box__img_4", {
+        opacity: 0,
+        y: "-50%",
+        duration: 1,
+      })
+
     const testMobileTL = gsap.timeline({
       scrollTrigger: {
         trigger: ".main-top-test-box_2",
@@ -96,10 +130,10 @@ document.addEventListener("DOMContentLoaded", () => {
         delay: 1,
       }, "sin")
 
-    const delayTL = gsap.timeline({
-      duration: 0.2,
-    })
-    mainTL.add(delayTL);
+    // const delayTL = gsap.timeline({
+    //   duration: 0.2,
+    // })
+    // mainTL.add(delayTL);
   }
 
   if (document.querySelector(".main-about-wrapper") && window.matchMedia("(min-width: 1024px)").matches) {
@@ -405,7 +439,7 @@ document.addEventListener("DOMContentLoaded", () => {
       b: 244,
     }
 
-    const dnaCoun = Math.round(dnaAnim.offsetHeight / (window.matchMedia("(min-width: 481px)").matches ? 50 : 25));
+    const dnaCoun = Math.round(dnaAnim.offsetHeight / (window.matchMedia("(min-width: 481px)").matches ? 25 : 50));
     for (let i = 0; i < dnaCoun; i++) {
       const item = dnaItem.cloneNode(true);
       const spin_1 = item.querySelector(".dna-anim__item_left");
