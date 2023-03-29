@@ -27,7 +27,8 @@
     font-size: 9.6rem;
     line-height: 11.6rem;
     padding-top: 6rem;
-    max-width: 85rem;
+    // max-width: 85rem;
+    width: 85rem;
 
     span {
       font-family: inherit;
@@ -60,6 +61,7 @@
       font-size: 4.8rem;
       line-height: 5.8rem;
       margin-bottom: 2.9rem;
+      width: 100%;
     }
 
     @include breakpoint($xs-bp) {
@@ -73,11 +75,13 @@
     font-size: 3.6rem;
     line-height: 4.6rem;
     letter-spacing: 0.03em;
-    max-width: 58.3rem;
+    // max-width: 58.3rem;
+    width: 58.3rem;
 
     @include breakpoint($xl-bp) {
       // margin-bottom: 4rem;
-      max-width: 100%;
+      // max-width: 100%;
+      width: 100%;
     }
 
     @include breakpoint($xs-bp) {
@@ -91,12 +95,14 @@
     font-size: 2.4rem;
     line-height: 3.1rem;
     letter-spacing: 0.03em;
-    max-width: 76.3rem;
+    // max-width: 76.3rem;
+    width: 76.3rem;
 
     @include breakpoint($xl-bp) {
       font-size: 1.8rem;
       line-height: 2.3rem;
-      max-width: 100%;
+      // max-width: 100%;
+      width: 100%;
     }
 
     @include breakpoint($xs-bp) {
@@ -177,7 +183,8 @@
       width: 100vw;
 
       .main-about__description {
-        max-width: 62rem;
+        // max-width: 62rem;
+        width: 62rem;
       }
 
       .main-about-slide__number {
@@ -189,11 +196,13 @@
       width: calc(100vw - 6rem);
 
       .main-about__description {
-        max-width: 62rem;
+        // max-width: 62rem;
+        width: 62rem;
       }
 
       .main-about__subtitle {
-        max-width: 61.1rem;
+        // max-width: 61.1rem;
+        width: 61.1rem;
       }
 
       .main-about-slide__number {
@@ -210,11 +219,13 @@
       }
 
       .main-about__description {
-        max-width: 62rem;
+        // max-width: 62rem;
+        width: 62rem;
       }
 
       .main-about__subtitle {
-        max-width: 61.1rem;
+        // max-width: 61.1rem;
+        width: 61.1rem;
       }
     }
 
@@ -227,11 +238,13 @@
       }
 
       .main-about__description {
-        max-width: 62rem;
+        // max-width: 62rem;
+        width: 62rem;
       }
 
       .main-about__subtitle {
-        max-width: 61.1rem;
+        // max-width: 61.1rem;
+        width: 61.1rem;
       }
     }
 
@@ -243,11 +256,13 @@
       }
 
       .main-about__description {
-        max-width: 56rem;
+        // max-width: 56rem;
+        width: 56rem;
       }
 
       .main-about__subtitle {
-        max-width: 56rem;
+        // max-width: 56rem;
+        width: 56rem;
       }
     }
 
@@ -260,11 +275,13 @@
       }
 
       .main-about__description {
-        max-width: 52rem;
+        // max-width: 52rem;
+        width: 52rem;
       }
 
       .main-about__subtitle {
-        max-width: 52rem;
+        // max-width: 52rem;
+        width: 52rem;
       }
     }
 
@@ -281,11 +298,13 @@
       }
 
       .main-about__description {
-        max-width: 52rem;
+        // max-width: 52rem;
+        width: 52rem;
       }
 
       .main-about__subtitle {
-        max-width: 52rem;
+        // max-width: 52rem;
+        width: 52rem;
       }
     }
   }

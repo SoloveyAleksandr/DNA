@@ -146,7 +146,7 @@
         line-height: 3.4rem;
         letter-spacing: 0.03em;
         max-width: 53.3rem;
-        margin-bottom: 13.4rem;
+        // margin-bottom: 13.4rem;
 
         @include breakpoint($xl-bp) {
           font-size: 2.4rem;
@@ -165,9 +165,12 @@
       }
 
       &__link {
+        margin-top: auto;
+
         @include breakpoint($xl-bp) {
           order: 2;
           margin-bottom: 55.7rem;
+          margin-top: 0;
         }
 
         @include breakpoint($xs-bp) {
@@ -208,7 +211,8 @@
         line-height: 3.9rem;
         text-transform: uppercase;
         padding-left: 9.8rem;
-        margin-bottom: 1.9rem;
+        // margin-bottom: 1.9rem;
+        margin-bottom: 5.5rem;
 
         @include breakpoint($xs-bp) {
           font-size: calc(1.6rem * 1.5);
@@ -227,7 +231,7 @@
         align-items: center;
         justify-content: center;
         position: relative;
-        margin-bottom: 2vh;
+        // margin-bottom: 2vh;
 
         // &::before {
         //   content: "";
@@ -409,6 +413,10 @@
             transform: translateX(-50%);
             top: 0;
             left: 0;
+
+            @include breakpoint($xl-bp) {
+              transform: none;
+            }
 
             &:nth-child(1) {
               z-index: 4;

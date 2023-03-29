@@ -32,9 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const mainTopWrapper = document.querySelector(".main-top-wrapper");
     const mainTop = mainTopWrapper.querySelector(".main-top");
 
-    console.log(mainTopWrapper.clientWidth);
-    console.log(mainTop.scrollWidth);
-
     const mainTL = gsap.timeline({
       scrollTrigger: {
         trigger: mainTopWrapper,
@@ -439,8 +436,9 @@ document.addEventListener("DOMContentLoaded", () => {
       b: 244,
     }
 
-    const dnaCoun = Math.round(dnaAnim.offsetHeight / (window.matchMedia("(min-width: 481px)").matches ? 25 : 50));
-    for (let i = 0; i < dnaCoun; i++) {
+    const dnaCount = Math.round(dnaAnim.offsetHeight / (window.matchMedia("(min-width: 481px)").matches ? 50 : 25));
+
+    for (let i = 0; i < dnaCount; i++) {
       const item = dnaItem.cloneNode(true);
       const spin_1 = item.querySelector(".dna-anim__item_left");
       const spin_2 = item.querySelector(".dna-anim__item_right");
