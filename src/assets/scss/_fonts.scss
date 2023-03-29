@@ -7,15 +7,15 @@
 // }
 
 // @font-face {
-//   font-family: "AVG45";
-//   src: local("AVG45"), local("AVG45"), url("../fonts/AVG45.ttf") format("truetype");
-//   font-weight: 400;
+//   font-family: "AvanGrade";
+//   src: local("AvanGrade"), local("AvanGrade"), url("../fonts/AVG65.TTF") format("truetype");
+//   font-weight: 600;
 //   font-style: normal;
 // }
 
-// @font-face {
-//   font-family: "AVG80";
-//   src: local("AVG80"), local("AVG80"), url("../fonts/AVG80.ttf") format("truetype");
-//   font-weight: 400;
-//   font-style: normal;
-// }
+@font-face {
+  font-family: "AvanGrade";
+  src: local("AvanGrade"), local("AvanGrade"), url("../fonts/AVG65.woff2") format("woff2"),
+    url("../fonts/AVG65.woff") format("woff");
+  font-style: normal;
+}

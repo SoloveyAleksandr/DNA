@@ -42,7 +42,8 @@
   }
 
   &__title {
-    font-weight: $font-eb;
+    // font-weight: $font-eb;
+    font-family: "AvanGrade";
     font-size: 9.6rem;
     line-height: 11.3rem;
     color: #FFFFFF;
@@ -59,6 +60,7 @@
     }
 
     span {
+      font-family: inherit;
       font-weight: inherit;
       font-size: inherit;
       line-height: inherit;

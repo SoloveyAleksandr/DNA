@@ -22,13 +22,15 @@
 
   &__title {
     flex: none;
-    font-weight: $font-eb;
+    // font-weight: $font-eb;
+    font-family: "AvanGrade";
     font-size: 9.6rem;
     line-height: 11.6rem;
     padding-top: 6rem;
     max-width: 85rem;
 
     span {
+      font-family: inherit;
       font-weight: inherit;
       font-size: inherit;
       line-height: inherit;
