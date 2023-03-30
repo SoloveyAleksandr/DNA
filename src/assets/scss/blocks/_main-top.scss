@@ -61,9 +61,15 @@
 
     @include breakpoint($xl-bp) {
       top: 5.3rem;
-      right: 0;
-      height: 92.6rem;
+      // right: 0;
+      right: 6rem;
+      // height: 92.6rem;
+      height: 70rem;
       width: 25.4rem;
+    }
+
+    @include breakpoint($sm-bp) {
+      right: 2rem;
     }
 
     @include breakpoint($sm-bp) {
@@ -72,7 +78,7 @@
 
     @include breakpoint($xs-bp) {
       width: 30vw;
-      height: calc(40.6rem * 1.5);
+      height: calc(35rem * 1.5);
     }
   }
 
@@ -157,10 +163,11 @@
         }
 
         @include breakpoint($xs-bp) {
-          font-size: calc(1.6rem * 1.5);
-          line-height: calc(1.9rem * 1.5);
+          font-size: calc(1.4rem * 1.5);
+          line-height: calc(1.6rem * 1.5);
           letter-spacing: 0.03em;
-          max-width: calc(21rem * 1.5);
+          // max-width: calc(21rem * 1.5);
+          max-width: 100%;
         }
       }
 
@@ -169,12 +176,14 @@
 
         @include breakpoint($xl-bp) {
           order: 2;
-          margin-bottom: 55.7rem;
+          // margin-bottom: 55.7rem;
+          margin-bottom: 48rem;
           margin-top: 0;
         }
 
         @include breakpoint($xs-bp) {
-          margin-bottom: calc(25.5rem * 1.5);
+          // margin-bottom: calc(25.5rem * 1.5);
+          margin-bottom: calc(20rem * 1.5);
         }
       }
     }
@@ -189,6 +198,7 @@
       position: relative;
       overflow: hidden;
       pointer-events: none;
+      padding-bottom: 5.5rem;
 
       @include breakpoint($xl-bp) {
         display: block;
@@ -258,8 +268,11 @@
         }
 
         @include breakpoint($xs-bp) {
-          width: calc(21rem * 1.5);
-          height: calc(21rem * 1.5);
+          // width: calc(21rem * 1.5);
+          // height: calc(21rem * 1.5);
+          width: calc(18rem * 1.5);
+          height: calc(18rem * 1.5);
+          margin-left: calc(2rem * 1.5);
         }
       }
     }
