@@ -8,14 +8,12 @@
 
 // @font-face {
 //   font-family: "AvanGrade";
-//   src: local("AvanGrade"), local("AvanGrade"), url("../fonts/AVG65.TTF") format("truetype");
-//   font-weight: 600;
+//   src: local("AvanGrade"), local("AvanGrade"), url("../fonts/AVG65.woff2") format("woff2"),
+//     url("../fonts/AVG65.woff") format("woff"), url("../fonts/AVG65.TTF") format("truetype");
 //   font-style: normal;
 // }
-
 @font-face {
   font-family: "AvanGrade";
-  src: local("AvanGrade"), local("AvanGrade"), url("../fonts/AVG65.woff2") format("woff2"),
-    url("../fonts/AVG65.woff") format("woff");
+  src: local("AvanGrade"), local("AvanGrade"), url("../fonts/AVG65.ttf") format("truetype");
   font-style: normal;
 }
