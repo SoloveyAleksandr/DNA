@@ -97,6 +97,7 @@
     letter-spacing: 0.03em;
     // max-width: 76.3rem;
     width: 76.3rem;
+    @include text;
 
     @include breakpoint($xl-bp) {
       font-size: 1.8rem;
