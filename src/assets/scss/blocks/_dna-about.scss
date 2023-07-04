@@ -37,7 +37,7 @@
     }
 
     @include breakpoint($xs-bp) {
-      margin-bottom: calc(2rem * 1.5);
+      margin-bottom: 2rem;
     }
   }
 
@@ -55,8 +55,8 @@
     }
 
     @include breakpoint($xs-bp) {
-      font-size: calc(2.4rem * 1.5);
-      line-height: calc(2.8rem * 1.5);
+      font-size: 2.4rem;
+      line-height: 2.8rem;
     }
 
     span {
@@ -104,7 +104,7 @@
       }
 
       @include breakpoint($xs-bp) {
-        padding: calc(2rem * 1.5) 0;
+        padding: 2rem 0;
       }
     }
 
@@ -117,9 +117,9 @@
       color: $accent;
 
       @include breakpoint($xs-bp) {
-        width: calc(3.5rem * 1.5);
-        font-size: calc(4.8rem * 1.5);
-        line-height: calc(5.8rem * 1.5);
+        width: 3.5rem;
+        font-size: 4.8rem;
+        line-height: 5.8rem;
       }
     }
 
@@ -138,8 +138,8 @@
       }
 
       @include breakpoint($xs-bp) {
-        font-size: calc(1.2rem * 1.5);
-        line-height: calc(1.5rem * 1.5);
+        font-size: 1.2rem;
+        line-height: 1.5rem;
       }
     }
   }

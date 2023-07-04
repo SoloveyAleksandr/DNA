@@ -6,7 +6,7 @@
   }
 
   @include breakpoint($xs-bp) {
-    padding: calc(10rem * 1.5) 0;
+    padding: 10rem 0;
   }
 
   &-container {
@@ -19,7 +19,7 @@
     }
 
     @include breakpoint($xs-bp) {
-      gap: calc(2rem * 1.5);
+      gap: 2rem;
     }
   }
 
@@ -36,7 +36,7 @@
 
     @include breakpoint($xs-bp) {
       width: 100%;
-      gap: calc(2rem * 1.5);
+      gap: 2rem;
     }
   }
 
@@ -62,9 +62,9 @@
     }
 
     @include breakpoint($xs-bp) {
-      font-size: calc(1.4rem * 1.5);
-      line-height: calc(1.8rem * 1.5);
-      height: calc(5rem * 1.5);
+      font-size: 1.4rem;
+      line-height: 1.8rem;
+      height: 5rem;
       padding: 0rem 1rem;
     }
   }
@@ -79,8 +79,8 @@
     padding-left: 2.5rem;
 
     @include breakpoint($xs-bp) {
-      font-size: calc(1.2rem * 1.5);
-      line-height: calc(1.5rem * 1.5);
+      font-size: 1.2rem;
+      line-height: 1.5rem;
       padding: 0;
     }
   }
@@ -104,8 +104,8 @@
     }
 
     @include breakpoint($xs-bp) {
-      font-size: calc(1.4rem * 1.5);
-      line-height: calc(1.7rem * 1.5);
+      font-size: 1.4rem;
+      line-height: 1.7rem;
     }
   }
 
@@ -120,22 +120,24 @@
     }
 
     @include breakpoint($xs-bp) {
-      font-size: calc(1.8rem * 1.5);
-      line-height: calc(2.2rem * 1.5);
+      font-size: 1.8rem;
+      line-height: 2.2rem;
     }
 
     span {
       font-weight: inherit;
       font-size: inherit;
       line-height: inherit;
-      background: linear-gradient(90deg,
-          #31a49a 0%,
-          #39bdb3 14.81%,
-          #41d7cd 30.82%,
-          #44e0d6 48.08%,
-          #48d6dc 62.2%,
-          #4fc4e5 80.1%,
-          #5aa7f5 100%);
+      background: linear-gradient(
+        90deg,
+        #31a49a 0%,
+        #39bdb3 14.81%,
+        #41d7cd 30.82%,
+        #44e0d6 48.08%,
+        #48d6dc 62.2%,
+        #4fc4e5 80.1%,
+        #5aa7f5 100%
+      );
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;

@@ -18,7 +18,7 @@ html {
   }
 
   @include breakpoint($xs-bp) {
-    font-size: calc(100vw / 480 * 10);
+    font-size: calc(100vw / 320 * 10);
   }
 }
 

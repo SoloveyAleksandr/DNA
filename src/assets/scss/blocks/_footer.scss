@@ -7,7 +7,7 @@
   }
 
   @include breakpoint($xs-bp) {
-    padding: calc(6rem * 1.5) 0;
+    padding: 6rem 0;
   }
 
   &-container {
@@ -22,7 +22,7 @@
 
     @include breakpoint($xs-bp) {
       column-gap: 0;
-      row-gap: calc(4rem * 1.5);
+      row-gap: 4rem;
     }
   }
 
@@ -38,8 +38,8 @@
     }
 
     @include breakpoint($xs-bp) {
-      width: calc(4.8rem * 1.5);
-      height: calc(7rem * 1.5);
+      width: 4.8rem;
+      height: 7rem;
     }
 
     &:hover {
@@ -113,8 +113,8 @@
         transition: 0.3s;
 
         @include breakpoint($xs-bp) {
-          font-size: calc(1.4rem * 1.5);
-          line-height: calc(1.7rem * 1.5);
+          font-size: 1.4rem;
+          line-height: 1.7rem;
         }
 
         &:hover {
@@ -138,7 +138,7 @@
       grid-area: 3/1/4/3;
       margin: 0 auto;
       align-items: center;
-      gap: calc(4rem * 1.5);
+      gap: 4rem;
     }
 
     &__link {
@@ -154,8 +154,8 @@
       width: fit-content;
 
       @include breakpoint($xs-bp) {
-        font-size: calc(1.4rem * 1.5);
-        line-height: calc(1.7rem * 1.5);
+        font-size: 1.4rem;
+        line-height: 1.7rem;
       }
 
       &::after {
@@ -170,8 +170,8 @@
         gap: 0rem;
 
         @include breakpoint($xs-bp) {
-          font-size: calc(1.8rem * 1.5);
-          line-height: calc(2.2rem * 1.5);
+          font-size: 1.8rem;
+          line-height: 2.2rem;
           color: $accent;
 
           &::after {
@@ -203,7 +203,7 @@
 
     @include breakpoint($xs-bp) {
       grid-area: 5/1/6/3;
-      gap: calc(2rem * 1.5);
+      gap: 2rem;
       align-items: center;
     }
 
@@ -213,7 +213,7 @@
       line-height: 2.2rem;
       color: #9b9b9b;
 
-      &>a {
+      & > a {
         font-weight: inherit;
         font-size: inherit;
         line-height: inherit;
@@ -258,8 +258,8 @@
 
       @include breakpoint($xs-bp) {
         margin: auto 0 auto auto;
-        font-size: calc(1.8rem * 1.5);
-        line-height: calc(2.2rem * 1.5);
+        font-size: 1.8rem;
+        line-height: 2.2rem;
       }
 
       &:hover {
@@ -270,6 +270,7 @@
     &-list {
       display: flex;
       flex-direction: column;
+      flex-wrap: wrap;
 
       @include breakpoint($xl-bp) {
         grid-area: 4/2/5/3;
@@ -281,13 +282,18 @@
       @include breakpoint($xs-bp) {
         margin: 0;
         grid-area: 4/1/5/3;
-        gap: calc(2rem * 1.5);
+        gap: 2rem;
         justify-content: center;
       }
 
       &__item {
         width: 5rem;
         height: 5rem;
+
+        @include breakpoint($xs-bp) {
+          width: 3rem;
+          height: 3rem;
+        }
 
         svg {
           object-fit: contain;

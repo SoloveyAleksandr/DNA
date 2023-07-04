@@ -104,11 +104,11 @@
         }
 
         @include breakpoint($xs-bp) {
-          font-size: calc(1.4rem * 1.5);
-          line-height: calc(1.6rem * 1.5);
+          font-size: 1.4rem;
+          line-height: 1.6rem;
           order: 2;
-          margin-bottom: calc(3rem * 1.5);
-          max-width: calc(19.8rem * 1.5);
+          margin-bottom: 3rem;
+          max-width: 19.8rem;
           margin-right: auto;
         }
       }
@@ -131,7 +131,7 @@
         @include breakpoint($xs-bp) {
           height: 60.3vw;
           order: 1;
-          margin-bottom: calc(2rem * 1.5);
+          margin-bottom: 2rem;
         }
 
         img {
@@ -165,8 +165,8 @@
         @include breakpoint($xs-bp) {
           top: 48.4vw;
           left: 4.7rem;
-          font-size: calc(1.8rem * 1.5);
-          line-height: calc(2.1rem * 1.5);
+          font-size: 1.8rem;
+          line-height: 2.1rem;
         }
       }
 
@@ -204,8 +204,8 @@
         }
 
         @include breakpoint($xs-bp) {
-          font-size: calc(1.4rem * 1.5);
-          line-height: calc(1.7rem * 1.5);
+          font-size: 1.4rem;
+          line-height: 1.7rem;
           order: 3;
           margin-left: auto;
         }
@@ -226,8 +226,8 @@
     }
 
     @include breakpoint($xs-bp) {
-      font-size: calc(2.4rem * 1.5);
-      line-height: calc(2.8rem * 1.5);
+      font-size: 2.4rem;
+      line-height: 2.8rem;
     }
   }
 
@@ -251,7 +251,7 @@
     }
 
     @include breakpoint($xs-bp) {
-      gap: calc(4rem * 1.5);
+      gap: 4rem;
     }
   }
 
@@ -282,8 +282,8 @@
       }
 
       @include breakpoint($xs-bp) {
-        width: calc(3.5rem * 1.5);
-        height: calc(2.2rem * 1.5);
+        width: 3.5rem;
+        height: 2.2rem;
       }
 
       svg {
