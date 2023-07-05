@@ -34,6 +34,57 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  class StoryController {
+    constructor(container) {
+      this.container = container;
+      this.btn = this.container.querySelector(".main-slider-story__btn");
+      this.title = this.container.querySelector(".main-slider-story__title");
+      this.text = this.container.querySelector(".main-slider-story__text");
+
+      if (this.container && this.btn && this.title && this.text) {
+        this.init();
+      }
+    }
+
+    init() {
+      this.btn.addEventListener("click", this.close.bind(this));
+    }
+
+    setInfo(title, story) {
+      this.title.textContent = title ? title.textContent : "";
+      this.text.innerHTML = story ? story.innerHTML : "";
+    }
+
+    open() {
+      this.container.classList.add("_active");
+    }
+
+    close() {
+      this.container.classList.remove("_active");
+    }
+  }
+
+  class StoryItem {
+    constructor(container, controller) {
+      this.container = container;
+      this.controller = controller
+      this.btn = this.container.querySelector(".main-slider-swiper-slide__link");
+      this.title = this.container.querySelector(".main-slider-swiper-slide__title");
+      this.story = this.container.querySelector(".main-slider-swiper-slide__story");
+
+      if (this.container && this.btn && this.title && this.story) {
+        this.init();
+      }
+    }
+
+    init() {
+      this.btn.addEventListener("click", () => {
+        this.controller.setInfo(this.title, this.story);
+        this.controller.open();
+      });
+    }
+  }
+
   SmoothScroll({
     // Время скролла 400 = 0.4 секунды
     animationTime: 800,
@@ -291,7 +342,8 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 
-  if (document.querySelector(".main-slider")) {
+  const mainSlider = document.querySelector(".main-slider");
+  if (mainSlider) {
     const swiper = new Swiper('.main-slider-swiper', {
       speed: 1000,
       navigation: {
@@ -299,6 +351,13 @@ document.addEventListener("DOMContentLoaded", () => {
         prevEl: ".main-slider .main-slider__btn_prev",
       },
     });
+
+    const storyContainer = mainSlider.querySelector(".main-slider-story");
+
+    const storyController = new StoryController(storyContainer);
+
+    const slides = mainSlider.querySelectorAll(".main-slider-swiper-slide");
+    slides.forEach(slide => new StoryItem(slide, storyController));
   }
 
   if (document.querySelector(".header")) {
