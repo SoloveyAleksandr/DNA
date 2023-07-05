@@ -3,7 +3,7 @@
 *,
 *::before,
 *::after {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: $font-m;
   font-size: 2.4rem;
   line-height: 3.1rem;
@@ -13,6 +13,7 @@
 
 html {
   background-color: $white;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -29,8 +30,8 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1)
-    /* цвет дорожки */
+  background: rgba(0, 0, 0, 0.1);
+  /* цвет дорожки */
 }
 
 body::-webkit-scrollbar-thumb {
@@ -38,6 +39,15 @@ body::-webkit-scrollbar-thumb {
   /* цвет плашки */
   border-radius: 1rem;
   /* закругления плашки */
+}
+
+button {
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  outline: none;
 }
 
 .container {
@@ -59,14 +69,14 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
-  transition: .3s;
+  transition: 0.3s;
 
   &::after {
     content: "";
     width: 100%;
     height: 0.3rem;
     background-color: $black-text;
-    transition: .3s;
+    transition: 0.3s;
   }
 
   &:hover {

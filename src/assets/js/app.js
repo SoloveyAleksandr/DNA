@@ -1,5 +1,39 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  class ModalFeedback {
+    constructor(container) {
+      this.container = container;
+      this.bg = this.container.querySelector(".modal-feedback__bg");
+      this.closeBtn = this.container.querySelector(".modal-feedback-form__close-btn");
+      this.form = this.container.querySelector(".modal-feedback-form");
+      this.isOpen = false;
+
+      if (this.container && this.bg && this.closeBtn && this.form) {
+        this.init();
+      }
+    }
+
+    init() {
+      this.closeBtn.addEventListener("click", this.close.bind(this));
+      this.bg.addEventListener("click", this.close.bind(this));
+      this.form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        this.form.classList.add("_send");
+      })
+    }
+
+    open() {
+      this.isOpen = true;
+      this.container.classList.add("_active");
+    }
+
+    close() {
+      this.isOpen = false;
+      this.container.classList.remove("_active");
+      this.form.classList.remove("_send");
+    }
+  }
+
   SmoothScroll({
     // Время скролла 400 = 0.4 секунды
     animationTime: 800,
@@ -453,6 +487,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     dnaAnim.appendChild(fragment);
   }
+
+  const modalFeedback = document.querySelector(".modal-feedback");
+  if (modalFeedback) {
+    const modal = new ModalFeedback(modalFeedback);
+
+    const btns = document.querySelectorAll("[data-modal-feedback]");
+    btns.forEach(btn => {
+      btn.addEventListener("click", () => modal.open());
+    })
+  }
+
 });
 
 window.onload = () => {
