@@ -13,9 +13,17 @@
   }
 
   &-container {
-    display: flex;
+    // display: flex;
+    // align-items: center;
+    // justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     align-items: center;
-    justify-content: space-between;
+
+    @include breakpoint($xl-bp) {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   &-logo {

@@ -3,24 +3,124 @@
 
     <div class="product__container">
 
-      <div class="product-photo-wrapper">
+      <div class="product__slider">
         <div class="swiper product-photo">
           <div class="swiper-wrapper">
             <div class="swiper-slide product-photo__item">
               <img src="./assets/images/product-box.png" alt="">
             </div>
             <div class="swiper-slide product-photo__item">
-              <img src="./assets/images/product-box.png" alt="">
+              <img src="./assets/images/dna-book.png" alt="">
             </div>
           </div>
           <div class="product-photo__btns">
             <button type="button" class="product-photo__btn product-photo__btn_prev">
               <svg>
-                <use href="#arrow-icon"></use>
+                <use href="#arrow-icon_left"></use>
+              </svg>
+            </button>
+            <button type="button" class="product-photo__btn product-photo__btn_next">
+              <svg>
+                <use href="#arrow-icon_right"></use>
               </svg>
             </button>
           </div>
         </div>
+
+        <div class="swiper product-nav">
+          <div class="swiper-wrapper">
+
+          </div>
+        </div>
+      </div>
+
+      <div class="product-info">
+        <h1 class="product-info__title">
+          Набор для ДНК-теста по образцу слюны
+        </h1>
+
+        <div class="product-info__text">
+          <p>
+            Специальный ДНК-тест для определение нехватки «гормонов счастья» — нейромедиаторов, позволяет разработать
+            персональную программу, направленную на компенсацию недостающих гормонов, и, как следствие, нормализацию
+            психо эмоционального состояния и устранение влечения к веществам и к игре.
+          </p>
+        </div>
+
+        <form action="#" class="product-form">
+          <h4 class="product-form__title">Оформление доставки</h4>
+
+          <div class="product-form__container">
+            <div class="product-form__head">
+              <h5 class="product-form__subtitle">Набор для ДНК-теста по образцу слюны</h5>
+
+              <div class="product-form-counter">
+                <button type="button" class="product-form-counter__btn product-form-counter__btn_decrement">-</button>
+                <input type="text" class="product-form-counter__input" value="1">
+                <span class="product-form-counter__value">1</span>
+                <button type="button" class="product-form-counter__btn product-form-counter__btn_increment">+</button>
+              </div>
+
+              <span class="product-form__price" data-price="3250">0000</span>
+            </div>
+
+            <div class="product-form-type">
+              <div class="product-form-type__item">
+                <h5 class="product-form__subtitle">Выберите форму доставки:</h5>
+
+                <div class="product-form-type__inner">
+                  <label class="product-form-type__label">
+                    Форма доставки 1
+                    <input type="radio" name="delivery-type" checked>
+                  </label>
+                  <label class="product-form-type__label">
+                    Форма доставки 2
+                    <input type="radio" name="delivery-type">
+                  </label>
+                  <label class="product-form-type__label">
+                    Форма доставки 3
+                    <input type="radio" name="delivery-type">
+                  </label>
+                </div>
+              </div>
+              <div class="product-form-type__item">
+                <h5 class="product-form__subtitle">Выберите форму оплаты:</h5>
+
+                <div class="product-form-type__inner">
+                  <label class="product-form-type__label">
+                    Форма оплаты 1
+                    <input type="radio" name="payment-type" checked>
+                  </label>
+                  <label class="product-form-type__label">
+                    Форма оплаты 2
+                    <input type="radio" name="payment-type">
+                  </label>
+                  <label class="product-form-type__label">
+                    Форма оплаты 3
+                    <input type="radio" name="payment-type">
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-form-contacts">
+              <div class="product-form-contacts__info">
+                <h5 class="product-form__subtitle">Заполните данные:</h5>
+                <p class="product-form-contacts__text">
+                  Нажимая на кнопку вы соглашаетесь с обработкой персональных данных
+                </p>
+              </div>
+
+              <div class="product-form-contacts__inner">
+                <input type="text" class="product-form-contacts__input" placeholder="Ваше Имя">
+                <input type="tel" class="product-form-contacts__input" placeholder="Номер телефона">
+                <input type="email" class="product-form-contacts__input" placeholder="E-mail">
+              </div>
+
+              <button type="button" class="product-form__btn">Оплатить</button>
+            </div>
+          </div>
+        </form>
       </div>
 
     </div>

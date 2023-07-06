@@ -85,6 +85,76 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  class Counter {
+    constructor(container) {
+      this.container = container;
+      this.decBtn = this.container.querySelector(".product-form-counter__btn_decrement");
+      this.incBtn = this.container.querySelector(".product-form-counter__btn_increment");
+      this.value = this.container.querySelector(".product-form-counter__value");
+      this.input = this.container.querySelector(".product-form-counter__input");
+      // this.priceContainer = priceContainer;
+      // this.price = this.priceContainer.getAttribute("data-price") || 0;
+
+      if (this.container && this.decBtn && this.incBtn && this.value && this.input) {
+        this.init();
+      }
+    }
+
+    init() {
+      this.incBtn.addEventListener("click", this.increment.bind(this));
+      this.decBtn.addEventListener("click", this.decrement.bind(this));
+      this.setValue();
+    }
+
+    increment() {
+      this.input.value = Number(this.input.value) + 1;
+      this.setValue();
+    }
+
+    decrement() {
+      if (Number(this.input.value) > 1) {
+        this.input.value = Number(this.input.value) - 1;
+      }
+      this.setValue();
+    }
+
+    setValue() {
+      this.value.textContent = this.input.value;
+      // this.priceContainer.textContent = Number(this.input.value) * Number(this.price);
+    }
+  }
+
+  class RadioBtn {
+    constructor(container, btnsList) {
+      this.container = container;
+      this.input = this.container.querySelector("input");
+      this.btnsList = btnsList;
+
+      if (this.container && this.input) {
+        this.init();
+      }
+    }
+
+    init() {
+      this.input.addEventListener("input", this.inputHandler.bind(this));
+      if (this.input.checked) {
+        this.container.classList.add("_checked");
+      } else {
+        this.container.classList.remove("_checked");
+      }
+    }
+
+    inputHandler() {
+      this.btnsList.forEach(btn => {
+        if (btn.input.checked) {
+          btn.container.classList.add("_checked");
+        } else {
+          btn.container.classList.remove("_checked");
+        }
+      });
+    }
+  }
+
   SmoothScroll({
     // Время скролла 400 = 0.4 секунды
     animationTime: 800,
@@ -555,6 +625,60 @@ document.addEventListener("DOMContentLoaded", () => {
     btns.forEach(btn => {
       btn.addEventListener("click", () => modal.open());
     })
+  }
+
+  const productSlider = document.querySelector(".product__slider");
+  if (productSlider) {
+    const navContainer = productSlider.querySelector(".product-nav");
+
+    const navSwiper = new Swiper(navContainer, {
+      allowTouchMove: false,
+      // spaceBetween: 15,
+      slidesPerView: 5,
+      speed: 800,
+      freeMode: true,
+      watchSlidesProgress: true,
+    });
+
+    const photoContainer = productSlider.querySelector(".product-photo");
+    const nextBtn = photoContainer.querySelector(".product-photo__btn_next");
+    const prevBtn = photoContainer.querySelector(".product-photo__btn_prev");
+
+    const photoSwiper = new Swiper(photoContainer, {
+      allowTouchMove: false,
+      spaceBetween: 100,
+      speed: 800,
+      loop: true,
+      navigation: {
+        nextEl: nextBtn,
+        prevEl: prevBtn,
+      },
+      thumbs: {
+        swiper: navSwiper,
+      },
+    });
+
+    photoSwiper.slides.forEach(slide => {
+      const newSlide = slide.cloneNode(true);
+      newSlide.className = "swiper-slide product-nav__item";
+
+      navSwiper.appendSlide(newSlide);
+      // console.log(newSlide);
+    })
+  }
+
+  const productForm = document.querySelector(".product-form");
+  if (productForm) {
+    const counter = productForm.querySelector(".product-form-counter");
+    // const price = productForm.querySelector(".product-form__price");
+    new Counter(counter);
+
+    const typeItems = productForm.querySelectorAll(".product-form-type__item");
+    typeItems.forEach(item => {
+      const radioBtns = item.querySelectorAll(".product-form-type__label");
+      const btnsList = [];
+      radioBtns.forEach(btn => btnsList.push(new RadioBtn(btn, btnsList)));
+    });
   }
 
 });
