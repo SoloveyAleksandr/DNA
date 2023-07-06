@@ -634,10 +634,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const navSwiper = new Swiper(navContainer, {
       allowTouchMove: false,
       // spaceBetween: 15,
-      slidesPerView: 5,
       speed: 800,
       freeMode: true,
       watchSlidesProgress: true,
+      slidesPerView: 4,
+      breakpoints: {
+        1024: {
+          slidesPerView: 5
+        }
+      }
     });
 
     const photoContainer = productSlider.querySelector(".product-photo");
